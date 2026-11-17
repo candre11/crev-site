@@ -1,6 +1,6 @@
 # CREV — Shopify
 
-Tema Shopify Online Store 2.0 per il brand di abbigliamento **CREV**, con una prima impostazione minimal in bianco, nero e toni neutri.
+Tema Shopify Online Store 2.0 per il brand di abbigliamento **CREV**, con una prima impostazione **light**, minimal in bianco, nero e toni neutri. Negozio configurato: `s511rf-k0.myshopify.com`.
 
 Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16.2.0), commit `5b0862a30e0f4dd4663d685815b02192263d2efe`. La licenza originale è conservata in [LICENSE.md](LICENSE.md).
 
@@ -19,10 +19,10 @@ Servono Node.js **22.12 o successivo**, npm e un account autorizzato ad accedere
 
 ```sh
 npm ci
-npm run dev -- --store nome-negozio.myshopify.com
+npm run dev
 ```
 
-Sostituisci il dominio con quello reale. La CLI avvia il flusso di accesso Shopify nel browser e restituisce il link di anteprima del tema di sviluppo. Non salvare password o token nel repository.
+Il dominio è definito nell’ambiente `crev` del file `shopify.theme.toml`. La CLI avvia il flusso di accesso Shopify nel browser e restituisce il link di anteprima del tema di sviluppo. Non salvare password o token nel repository.
 
 Il tema Liquid viene renderizzato da Shopify: non è un’applicazione React e non si avvia con un server statico locale.
 
@@ -31,7 +31,7 @@ Il tema Liquid viene renderizzato da Shopify: non è un’applicazione React e n
 ```sh
 npm run check
 npm run package
-npm run push:preview -- --store nome-negozio.myshopify.com
+npm run push:preview
 ```
 
 Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online → Temi** di Shopify puoi personalizzarlo, provarlo e pubblicarlo quando è pronto. In alternativa carica il file ZIP generato da `npm run package` oppure collega questo repository dall’integrazione GitHub di Shopify.
@@ -50,6 +50,7 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 - `assets/section-crev-hero.css`: stile responsive della hero.
 - `templates/index.json`: composizione della homepage.
 - `config/settings_data.json`: valori iniziali di colori e carrello.
+- `shopify.theme.toml`: dominio Shopify per sviluppo e caricamento in anteprima, senza credenziali.
 - `sections/header-group.json`, `sections/footer-group.json`: configurazione iniziale di testata e footer.
 - Le altre cartelle contengono il tema Dawn e le sue funzionalità native.
 

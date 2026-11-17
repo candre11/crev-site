@@ -7,10 +7,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "shopify theme dev",
+    "dev": "shopify theme dev --environment crev",
     "check": "shopify theme check --fail-level error",
     "package": "shopify theme package",
-    "push:preview": "shopify theme push --unpublished"
+    "push:preview": "shopify theme push --environment crev --unpublished"
   },
   "devDependencies": {
     "@shopify/cli": "5.0.1"
