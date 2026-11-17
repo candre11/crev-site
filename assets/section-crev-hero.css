@@ -6,31 +6,48 @@
 }
 
 .crev-hero__copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: clamp(3rem, 6vw, 10rem);
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+  justify-items: center;
+  min-width: 0;
+  min-height: 48rem;
+  padding: clamp(2.4rem, 4vw, 6rem);
+  text-align: center;
+  container-type: inline-size;
+}
+
+.crev-hero__intro {
+  align-self: start;
 }
 
 .crev-hero__eyebrow {
-  margin: 0 0 3rem;
+  margin: 0;
   font-size: 1.2rem;
   letter-spacing: 0.22em;
 }
 
 .crev-hero__title {
-  max-width: 10ch;
+  align-self: center;
   margin: 0;
-  font-size: clamp(4.8rem, 6vw, 10rem);
-  line-height: 1.02;
+  max-width: 100%;
+  font-size: clamp(2.4rem, 4.2vw, 9rem);
+  font-size: clamp(1.8rem, 13cqw, 9rem);
+  line-height: 1.1;
   letter-spacing: -0.055em;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+}
+
+.crev-hero__details {
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 .crev-hero__text {
   max-width: 34ch;
-  margin: 2.8rem 0 3.6rem;
+  margin: 0;
   font-size: 1.6rem;
   line-height: 1.7;
 }
@@ -81,15 +98,13 @@
   }
 
   .crev-hero__copy {
-    padding: 4.8rem 2.4rem;
-  }
-
-  .crev-hero__eyebrow {
-    margin-bottom: 2rem;
+    min-height: 40rem;
+    padding: 3.2rem 2.4rem;
   }
 
   .crev-hero__title {
-    font-size: clamp(4.8rem, 12vw, 7rem);
+    font-size: clamp(2.4rem, 8vw, 7rem);
+    font-size: clamp(1.8rem, 13cqw, 7rem);
   }
 
   .crev-hero__placeholder {
