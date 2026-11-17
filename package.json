@@ -1,0 +1,18 @@
+{
+  "name": "crev-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tema Shopify CREV per abbigliamento, basato su Dawn 16.2.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "shopify theme dev",
+    "check": "shopify theme check --fail-level error",
+    "package": "shopify theme package",
+    "push:preview": "shopify theme push --unpublished"
+  },
+  "devDependencies": {
+    "@shopify/cli": "5.0.1"
+  }
+}
