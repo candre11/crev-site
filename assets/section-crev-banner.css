@@ -1,0 +1,30 @@
+.crev-banner {
+  display: grid;
+  place-items: center;
+  min-height: clamp(20rem, 28vw, 36rem);
+  padding: clamp(4rem, 7vw, 9rem) 2.4rem;
+  background-color: #e8e3d2;
+  background-image:
+    linear-gradient(rgba(250, 247, 237, 0.6), rgba(250, 247, 237, 0.6)),
+    var(--crev-banner-pattern);
+  background-size: auto, 72rem 48rem;
+  background-repeat: repeat;
+}
+
+.crev-banner__heading {
+  max-width: 100%;
+  margin: 0;
+  color: #111111;
+  font-family: var(--font-heading-family);
+  font-size: clamp(3.2rem, 9vw, 12.8rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.crev-banner__accent {
+  color: #bc4306;
+}

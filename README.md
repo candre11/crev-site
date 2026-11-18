@@ -6,7 +6,7 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 
 ## Cosa include
 
-- Homepage con hero CREV personalizzabile dall’editor Shopify e collezione in evidenza.
+- Homepage con banner camouflage, titolo “Devi CREVerci” con CREV in arancione e due prodotti subito sotto, in due colonne anche su mobile.
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
 - Carrello laterale e passaggio al checkout Shopify.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
@@ -40,13 +40,15 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 1. Imposta il nome negozio **CREV**, il logo e l’italiano come lingua predefinita, se desiderato.
 2. Aggiungi i capi e le varianti taglia/colore con prezzi, foto e disponibilità reali.
-3. Nell’editor tema seleziona la collezione della homepage e una foto per **CREV — Hero**. Titolo, testo e pulsante sono modificabili.
+3. Nell’editor tema seleziona la collezione della homepage: verranno mostrati i primi due prodotti del suo ordinamento. Il titolo si modifica nella sezione **CREV — Banner camouflage**; le lettere CREV vengono colorate in arancione.
 4. Configura il menu principale (ad esempio Shop e Contatti) e i collegamenti del footer.
 5. Configura pagamenti, spedizioni e informative nel pannello Shopify. Verifica un ordine di prova prima di pubblicare.
 
 ## Struttura
 
-- `sections/crev-hero.liquid`: sezione personalizzata CREV.
+- `sections/crev-banner.liquid`: banner della homepage con titolo nero e CREV arancione.
+- `assets/section-crev-banner.css`, `assets/crev-camouflage.svg`: stile e pattern vettoriale del banner, incluso nel tema.
+- `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.
 - `assets/section-crev-hero.css`: stile responsive della hero.
 - `templates/index.json`: composizione della homepage.
 - `config/settings_data.json`: valori iniziali di colori e carrello.

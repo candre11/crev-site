@@ -1,19 +1,25 @@
 {
   "sections": {
+    "crev_banner": {
+      "type": "crev-banner",
+      "settings": {
+        "heading": "Devi CREVerci"
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "La selezione CREV",
+        "title": "",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "products_to_show": 2,
+        "columns_desktop": 2,
         "color_scheme": "scheme-1",
         "full_width": false,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "swipe_on_mobile": false,
@@ -24,24 +30,13 @@
         "show_rating": false,
         "quick_add": "standard",
         "columns_mobile": "2",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "crev_hero": {
-      "type": "crev-hero",
-      "settings": {
-        "eyebrow": "CREV / ESSENTIALS",
-        "heading": "Devi CREVerci",
-        "text": "Abbigliamento essenziale. Spazio alla tua personalità.",
-        "button_label": "Esplora la collezione",
-        "button_link": "shopify://collections/all",
-        "color_scheme": "scheme-1"
+        "padding_top": 32,
+        "padding_bottom": 48
       }
     }
   },
   "order": [
-    "crev_hero",
+    "crev_banner",
     "featured_collection"
   ]
 }
