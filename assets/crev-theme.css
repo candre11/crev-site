@@ -36,8 +36,126 @@
   min-width: 0;
 }
 
-@media screen and (max-width: 989px) {
+@media screen and (max-width: 599px) {
   .crev-storefront--index .product-grid {
     grid-template-columns: minmax(0, 38rem);
+  }
+}
+
+.crev-header-brand {
+  padding-block: 0;
+  line-height: 1;
+}
+
+.crev-acronym {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  overflow: visible;
+  line-height: 1;
+}
+
+.crev-acronym__home {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.crev-acronym__letter {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.8rem;
+  min-height: 4.4rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  font: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.crev-acronym__initial {
+  background-position: calc(var(--crev-letter-index) * -2.4rem) 0;
+}
+
+.crev-acronym__dot {
+  position: relative;
+  z-index: 1;
+  width: 0.8rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.crev-acronym__ending {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 50%;
+  z-index: 2;
+  display: block;
+  padding: 0.8rem 0.55rem;
+  border: 1px solid rgba(var(--color-foreground), 0.15);
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  box-shadow: 0 0.3rem 0.8rem rgba(var(--color-foreground), 0.12);
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, -0.4rem);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+  pointer-events: none;
+}
+
+.crev-acronym__letter[aria-expanded='true'] .crev-acronym__ending,
+.crev-acronym:not(.is-enhanced) .crev-acronym__letter:hover .crev-acronym__ending,
+.crev-acronym:not(.is-enhanced) .crev-acronym__letter:focus-visible .crev-acronym__ending {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.crev-acronym__letter:focus-visible,
+.crev-acronym__home:focus-visible {
+  outline: 0.2rem solid rgb(var(--color-foreground));
+  outline-offset: 0.2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .header.header--mobile-center {
+    grid-template-columns: minmax(4.4rem, 1fr) auto minmax(4.4rem, 1fr);
+    column-gap: 0.8rem;
+    padding-inline: 1.5rem;
+  }
+
+  .crev-acronym .crev-wordmark {
+    font-size: 3.2rem;
+  }
+
+  .crev-acronym__letter {
+    min-width: 2.4rem;
+  }
+
+  .crev-acronym__dot {
+    width: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crev-acronym__ending {
+    transition: none;
+    transform: translate(-50%, 0);
   }
 }

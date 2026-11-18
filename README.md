@@ -6,11 +6,11 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 
 ## Cosa include
 
-- Homepage con banner camouflage, titolo “Devi CREVerci” con CREV in arancione e due prodotti subito sotto, in due colonne su desktop e una colonna sulle finestre più strette.
+- Homepage con banner camouflage, titolo “Devi CREVerci” con CREV in arancione e due prodotti subito sotto, in due colonne da 600 px e una colonna sulle finestre più strette.
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
-- Logo testuale CREV camouflage, senza la precedente barra annunci.
+- Logo C.R.E.V. camouflage centrato: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
-- Banner a tutta larghezza con altezza fissa; schede prodotto da 380 px su desktop, centrate e disposte in una colonna quando lo spazio si riduce.
+- Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, centrate e affiancate da 600 px; una colonna sotto questa soglia.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
 
 Le immagini e i prodotti segnaposto del tema vanno sostituiti con il catalogo reale. Prodotti, ordini, pagamenti, dominio e lingua predefinita si configurano nel pannello Shopify; non sono contenuti nel repository.
@@ -48,7 +48,9 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 ## Struttura
 
-- `assets/crev-theme.css`, `snippets/crev-wordmark.liquid`: identità visiva e disposizione responsive dei prodotti.
+- `assets/crev-theme.css`: identità visiva e disposizione responsive dei prodotti.
+- `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`: logo centrato e completamenti verticali interattivi.
+- `snippets/crev-wordmark.liquid`: logo testuale per la pagina con password.
 - `sections/crev-banner.liquid`: banner della homepage con titolo nero e CREV arancione.
 - `assets/section-crev-banner.css`, `assets/crev-camouflage.svg`: stile e pattern vettoriale del banner, incluso nel tema.
 - `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.

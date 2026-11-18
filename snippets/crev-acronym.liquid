@@ -1,0 +1,26 @@
+<crev-acronym
+  class="crev-acronym"
+  role="group"
+  aria-label="C.R.E.V."
+  style="--crev-wordmark-pattern: url('{{ 'crev-camouflage.svg' | asset_url }}');"
+>
+  <a href="{{ routes.root_url }}" class="crev-acronym__home focus-inset" aria-label="C.R.E.V. — Home">
+    <span class="visually-hidden">Home</span>
+  </a>
+  {%- assign initials = 'C,R,E,V' | split: ',' -%}
+  {%- assign endings = 'lothing,ejects,very,erges' | split: ',' -%}
+  {%- for initial in initials -%}
+    {%- assign ending = endings[forloop.index0] -%}
+    <button
+      type="button"
+      class="crev-acronym__letter"
+      aria-label="{{ initial | append: ending }}"
+      aria-expanded="false"
+      style="--crev-letter-index: {{ forloop.index0 }};"
+    >
+      <span class="crev-wordmark crev-acronym__initial" aria-hidden="true">{{ initial }}</span>
+      <span class="crev-acronym__ending" aria-hidden="true">{{ ending }}</span>
+    </button>
+    <span class="crev-wordmark crev-acronym__dot" aria-hidden="true">.</span>
+  {%- endfor -%}
+</crev-acronym>
