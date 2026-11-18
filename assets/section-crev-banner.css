@@ -23,6 +23,7 @@
   letter-spacing: -0.045em;
   text-align: center;
   white-space: nowrap;
+  transition: opacity 180ms ease;
 }
 
 .crev-banner__accent {
@@ -44,5 +45,11 @@
 @media screen and (max-width: 379px) {
   .crev-banner__heading {
     font-size: 3.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crev-banner__heading {
+    transition: none;
   }
 }

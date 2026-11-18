@@ -8,7 +8,7 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 
 - Homepage con banner camouflage, titolo “Devi CREVerci” con CREV in arancione e due prodotti subito sotto, in due colonne da 600 px e una colonna sulle finestre più strette.
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
-- Logo C.R.E.V. camouflage centrato: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
+- Logo C.R.E.V. camouflage centrato: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti hanno la stessa dimensione delle iniziali e nessun riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
 - Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, centrate e affiancate da 600 px; una colonna sotto questa soglia.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
@@ -46,13 +46,24 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 4. Configura il menu principale (ad esempio Shop e Contatti) e i collegamenti del footer.
 5. Configura pagamenti, spedizioni e informative nel pannello Shopify. Verifica un ordine di prova prima di pubblicare.
 
+## Camouflage personalizzato
+
+Il banner e le scritte del logo condividono un’unica immagine. Per usare il tuo file originale:
+
+1. Avvia `npm run dev` e apri il link dell’editor del tema mostrato dalla CLI.
+2. Vai in **Impostazioni tema → Camouflage CREV → Immagine camouflage**.
+3. Carica o seleziona l’immagine e salva: viene usata nel banner e nei loghi testuali.
+
+In assenza di una selezione rimane il pattern SVG incluso. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
+
 ## Struttura
 
 - `assets/crev-theme.css`: identità visiva e disposizione responsive dei prodotti.
 - `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`: logo centrato e completamenti verticali interattivi.
 - `snippets/crev-wordmark.liquid`: logo testuale per la pagina con password.
 - `sections/crev-banner.liquid`: banner della homepage con titolo nero e CREV arancione.
-- `assets/section-crev-banner.css`, `assets/crev-camouflage.svg`: stile e pattern vettoriale del banner, incluso nel tema.
+- `assets/section-crev-banner.css`, `assets/crev-camouflage.svg`: stile e pattern vettoriale predefinito del banner.
+- `snippets/crev-camouflage-url.liquid`: sorgente condivisa del camouflage selezionato nell’editor.
 - `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.
 - `assets/section-crev-hero.css`: stile responsive della hero.
 - `templates/index.json`: composizione della homepage.

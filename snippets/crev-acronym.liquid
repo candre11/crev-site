@@ -2,7 +2,7 @@
   class="crev-acronym"
   role="group"
   aria-label="C.R.E.V."
-  style="--crev-wordmark-pattern: url('{{ 'crev-camouflage.svg' | asset_url }}');"
+  style="--crev-wordmark-pattern: url('{% render 'crev-camouflage-url' %}');"
 >
   <a href="{{ routes.root_url }}" class="crev-acronym__home focus-inset" aria-label="C.R.E.V. — Home">
     <span class="visually-hidden">Home</span>

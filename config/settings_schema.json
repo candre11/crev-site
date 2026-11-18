@@ -41,6 +41,17 @@
     ]
   },
   {
+    "name": "Camouflage CREV",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "crev_camouflage",
+        "label": "Immagine camouflage",
+        "info": "Scegli una sola immagine per il banner e le scritte C.R.E.V. Se non è selezionata, viene usato il pattern incluso nel tema."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {
