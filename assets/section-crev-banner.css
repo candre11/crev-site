@@ -1,8 +1,8 @@
 .crev-banner {
   display: grid;
   place-items: center;
-  min-height: clamp(20rem, 28vw, 36rem);
-  padding: clamp(4rem, 7vw, 9rem) 2.4rem;
+  min-height: 28rem;
+  padding: 4rem 2.4rem;
   background-color: #e8e3d2;
   background-image:
     linear-gradient(rgba(250, 247, 237, 0.6), rgba(250, 247, 237, 0.6)),
@@ -16,7 +16,7 @@
   margin: 0;
   color: #111111;
   font-family: var(--font-heading-family);
-  font-size: clamp(3.2rem, 9vw, 12.8rem);
+  font-size: 9.6rem;
   font-style: normal;
   font-weight: 700;
   line-height: 1.1;
@@ -27,4 +27,22 @@
 
 .crev-banner__accent {
   color: #bc4306;
+}
+
+@media screen and (max-width: 989px) {
+  .crev-banner__heading {
+    font-size: 7.2rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .crev-banner__heading {
+    font-size: 4.8rem;
+  }
+}
+
+@media screen and (max-width: 379px) {
+  .crev-banner__heading {
+    font-size: 3.6rem;
+  }
 }
