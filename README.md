@@ -13,6 +13,7 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 - Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, affiancate da 600 px. L’area prodotti si ferma alla larghezza del tema (1200 px): oltre questa soglia la distanza tra le schede resta fissa e aumentano solo i margini esterni. Sotto 600 px resta una colonna centrata.
 - Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify e ingrandimento al passaggio del cursore pari al carrello (1,07×). Menu e ricerca nascosti, riattivabili con “Mostra il menu nella testata” e “Mostra la ricerca nella testata” nell’editor. Il menu selezionato e le pagine restano disponibili.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
+- Footer unico arancione (`#ed8b3a`) con testi e logo C verde militare (`#343b26`). Newsletter a 3 px dal bordo superiore e sinistro, copyright e informative a 3 px dal bordo inferiore e sinistro, marchio a 3 px dal bordo inferiore e destro. Instagram, TikTok e YouTube sono etichette senza collegamenti. Le colonne si ridispongono sulle finestre strette; restano attivi il modulo newsletter e i collegamenti alle informative pubblicate su Shopify.
 - Pagina con password “Opening soon” con logo nero, sfondo camouflage a tutta pagina e riquadro arancione. Titolo e frase “be the first to know when the jungle opens” in marrone; la stampa della maglia crema segue il testo, alta 1 em. Accesso con password e iscrizione email mantengono i moduli Shopify.
 
 Le immagini e i prodotti segnaposto del tema vanno sostituiti con il catalogo reale. Prodotti, ordini, pagamenti, dominio e lingua predefinita si configurano nel pannello Shopify; non sono contenuti nel repository.
@@ -67,6 +68,7 @@ In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`, lo stesso 
 ## Struttura
 
 - `assets/crev-theme.css`: identità visiva e disposizione responsive dei prodotti.
+- `sections/footer.liquid`, `assets/crev-footer.css`, `assets/c nera.png`: footer arancione con newsletter, voci social e logo verde; il PNG originale è colorato tramite maschera SVG e conservato integro.
 - `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`, `assets/crev nero.png`: logo ufficiale centrato e completamenti verticali sulle quattro lettere.
 - `snippets/crev-logo.liquid`: vista del logo originale, condivisa fra testata e titolo; maschera opzionale per il colore arancione.
 - `snippets/crev-account-avatar.liquid`, `assets/scimmia.png`: immagine personalizzata nel componente account Shopify.

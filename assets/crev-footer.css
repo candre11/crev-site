@@ -1,0 +1,171 @@
+.footer.crev-footer {
+  --color-background: 237, 139, 58;
+  --color-foreground: 52, 59, 38;
+  --color-link: 52, 59, 38;
+  --color-button: 52, 59, 38;
+  --color-button-text: 237, 139, 58;
+  --font-body-family: var(--crev-label-font-family);
+  --font-heading-family: var(--crev-label-font-family);
+  --font-body-weight: 700;
+  --font-heading-weight: 700;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(10rem, 0.6fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(12rem, 1fr) auto;
+  grid-template-areas:
+    'newsletter social utilities'
+    'blocks blocks mark'
+    'legal legal mark';
+  gap: clamp(1.6rem, 2vw, 3.2rem);
+  min-height: clamp(38rem, 48vw, 60rem);
+  margin-top: 0;
+  padding: 3px;
+  border: 0;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-weight: 700;
+}
+
+.crev-footer .footer__content-top,
+.crev-footer .footer-block--newsletter,
+.crev-footer .footer__content-bottom {
+  display: contents;
+}
+
+.crev-footer .footer-block__newsletter {
+  grid-area: newsletter;
+  width: 100%;
+  max-width: 44rem;
+  min-width: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.crev-footer .footer-block__heading {
+  margin: 0 0 1.2rem;
+  color: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.crev-footer .footer__newsletter,
+.crev-footer .newsletter-form__field-wrapper {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.crev-footer__social {
+  grid-area: social;
+  align-self: start;
+  min-width: 0;
+  text-transform: uppercase;
+}
+
+.crev-footer__social ul {
+  margin: 0;
+}
+
+.crev-footer .footer__blocks-wrapper {
+  grid-area: blocks;
+  align-self: start;
+  min-width: 0;
+  margin: 0;
+}
+
+.crev-footer .footer-block.grid__item {
+  margin: 0;
+  text-align: left;
+}
+
+.crev-footer .footer__content-bottom-wrapper {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.crev-footer .crev-footer__utilities {
+  grid-area: utilities;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: 1.6rem;
+  min-width: 0;
+}
+
+.crev-footer .footer__column--info,
+.crev-footer .footer__localization,
+.crev-footer .localization-form {
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.crev-footer .crev-footer__legal {
+  grid-area: legal;
+  align-self: end;
+  min-width: 0;
+  text-align: left;
+}
+
+.crev-footer .footer__copyright,
+.crev-footer .policies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 0.2rem 0.8rem;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.crev-footer .copyright__content,
+.crev-footer .copyright__content a {
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.crev-footer .policies li::before {
+  display: none;
+}
+
+.crev-footer__mark {
+  grid-area: mark;
+  align-self: end;
+  justify-self: end;
+  width: min(100%, 46rem);
+  color: inherit;
+  line-height: 0;
+}
+
+.crev-footer__mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 989px) {
+  .footer.crev-footer {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-rows: auto auto minmax(12rem, 1fr);
+    grid-template-areas:
+      'newsletter newsletter'
+      'social utilities'
+      'blocks blocks'
+      'legal mark';
+    min-height: 40rem;
+  }
+
+  .crev-footer__mark {
+    width: clamp(8rem, 28vw, 26rem);
+    max-width: 100%;
+  }
+}
