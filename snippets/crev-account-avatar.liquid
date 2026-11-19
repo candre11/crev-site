@@ -1,8 +1,27 @@
-<img
-  src="{{ 'scimmia.png' | asset_url }}"
-  class="crev-account-avatar"
-  width="36"
-  height="36"
-  alt=""
-  decoding="async"
->
+{%- if request.page_type == 'index' -%}
+  {%- assign avatar_mask_id = 'crev-account-avatar-' | append: section.id -%}
+  <svg
+    class="crev-account-avatar"
+    viewBox="0 0 3000 3000"
+    width="36"
+    height="36"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <mask id="{{ avatar_mask_id | escape }}" maskUnits="userSpaceOnUse" x="0" y="0" width="3000" height="3000" style="mask-type: alpha;">
+        <image href="{{ 'scimmia.png' | asset_url | escape }}" width="3000" height="3000" />
+      </mask>
+    </defs>
+    <rect width="3000" height="3000" fill="currentColor" mask="url(#{{ avatar_mask_id | escape }})" />
+  </svg>
+{%- else -%}
+  <img
+    src="{{ 'scimmia.png' | asset_url }}"
+    class="crev-account-avatar"
+    width="36"
+    height="36"
+    alt=""
+    decoding="async"
+  >
+{%- endif -%}

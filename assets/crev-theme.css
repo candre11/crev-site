@@ -33,6 +33,11 @@
   color: rgb(var(--color-foreground));
 }
 
+.crev-storefront--index .crev-account-avatar,
+.crev-storefront--index .header__icon--cart {
+  color: #d8c4b9;
+}
+
 .crev-storefront--index .collection > slider-component {
   width: 100%;
   max-width: var(--page-width);
