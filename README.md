@@ -6,9 +6,9 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 
 ## Cosa include
 
-- Homepage con banner camouflage, titolo “Devi CREVerci” con CREV in arancione e due prodotti subito sotto, in due colonne da 600 px e una colonna sulle finestre più strette.
+- Homepage con banner camouflage continuo, titolo “Devi CREVerci” in crema con il logo CREV arancione e due prodotti subito sotto, in due colonne da 600 px e una colonna sulle finestre più strette.
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
-- Logo nero ufficiale `crev nero.png` centrato e interattivo: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti hanno la stessa dimensione delle iniziali e nessun riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
+- Logo nero ufficiale `crev nero.png` centrato e interattivo: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti sono più piccoli delle iniziali, ravvicinati al disegno e senza riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
 - Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, centrate e affiancate da 600 px; una colonna sotto questa soglia.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
@@ -48,7 +48,9 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 ## Camouflage personalizzato
 
-Il banner usa direttamente il file `assets/Pattern_Camo.PNG`, senza velature. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG.
+Il banner usa direttamente il file `assets/Pattern_Camo.PNG`, senza velature o ripetizioni. L’immagine riempie il banner mantenendo le proporzioni, con ritaglio centrato ai bordi secondo la finestra: non presenta giunture fra copie del pattern. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG. Lo stesso disegno viene colorato in arancione nel titolo tramite una maschera, senza alterare il file.
+
+Titolo e completamenti verticali usano Arial Bold (con fallback Helvetica/sans-serif), scelto come corrispondenza visiva alla riga “Made in Italy 100% Cotton” di `assets/etichetta L.png`. Il PNG dell’etichetta è un riferimento grafico e non contiene il file del carattere. La famiglia è centralizzata nella variabile `--crev-label-font-family`.
 
 Per cambiare il camouflage del logo testuale della pagina con password:
 
@@ -62,8 +64,9 @@ In assenza di una selezione, il logo della pagina con password mantiene il patte
 
 - `assets/crev-theme.css`: identità visiva e disposizione responsive dei prodotti.
 - `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`, `assets/crev nero.png`: logo ufficiale centrato e completamenti verticali sulle quattro lettere.
+- `snippets/crev-logo.liquid`: vista del logo originale, condivisa fra testata e titolo; maschera opzionale per il colore arancione.
 - `snippets/crev-wordmark.liquid`: logo testuale per la pagina con password.
-- `sections/crev-banner.liquid`: banner della homepage con titolo nero e CREV arancione.
+- `sections/crev-banner.liquid`: banner della homepage con titolo crema e logo CREV arancione.
 - `assets/section-crev-banner.css`, `assets/Pattern_Camo.PNG`: stile e immagine camouflage del banner.
 - `assets/crev-camouflage.svg`, `snippets/crev-camouflage-url.liquid`: pattern predefinito e sorgente del camouflage dei loghi testuali.
 - `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.

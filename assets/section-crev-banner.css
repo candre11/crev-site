@@ -5,15 +5,16 @@
   padding: 4rem 2.4rem;
   background-color: #e8e3d2;
   background-image: var(--crev-banner-pattern);
-  background-size: 72rem 48rem;
-  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .crev-banner__heading {
   max-width: 100%;
   margin: 0;
-  color: #111111;
-  font-family: var(--font-heading-family);
+  color: rgb(var(--color-background));
+  font-family: var(--crev-label-font-family);
   font-size: 9.6rem;
   font-style: normal;
   font-weight: 700;
@@ -25,7 +26,16 @@
 }
 
 .crev-banner__accent {
+  display: inline-block;
+  width: 2.85em;
   color: #bc4306;
+  vertical-align: -0.025em;
+}
+
+.crev-banner__logo {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 989px) {

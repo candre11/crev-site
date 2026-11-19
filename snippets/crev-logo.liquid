@@ -1,0 +1,20 @@
+{% comment %}Display the original PNG without its transparent margins; optionally tint its alpha mask.{% endcomment %}
+<svg
+  class="{{ logo_class | escape }}"
+  viewBox="133 1109 2734 657"
+  width="2734"
+  height="657"
+  aria-hidden="true"
+  focusable="false"
+>
+  {%- if mask_id != blank -%}
+    <defs>
+      <mask id="{{ mask_id | escape }}" maskUnits="userSpaceOnUse" x="133" y="1109" width="2734" height="657" style="mask-type: alpha;">
+        <image href="{{ 'crev nero.png' | asset_url | escape }}" width="3000" height="3000" />
+      </mask>
+    </defs>
+    <rect x="133" y="1109" width="2734" height="657" fill="currentColor" mask="url(#{{ mask_id | escape }})" />
+  {%- else -%}
+    <image href="{{ 'crev nero.png' | asset_url | escape }}" width="3000" height="3000" />
+  {%- endif -%}
+</svg>

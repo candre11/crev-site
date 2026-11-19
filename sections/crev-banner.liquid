@@ -1,11 +1,18 @@
 {{ 'section-crev-banner.css' | asset_url | stylesheet_tag }}
 
+{%- capture crev_logo -%}
+  <span class="crev-banner__accent"><span class="visually-hidden">CREV</span>
+    {%- assign mask_id = 'crev-banner-logo-' | append: section.id -%}
+    {%- render 'crev-logo', logo_class: 'crev-banner__logo', mask_id: mask_id -%}
+  </span>
+{%- endcapture -%}
+
 <section
   class="crev-banner"
   style="--crev-banner-pattern: url('{{ 'Pattern_Camo.PNG' | asset_url }}');"
 >
   <h1 class="crev-banner__heading">
-    {{ section.settings.heading | escape | replace: 'CREV', '<span class="crev-banner__accent">CREV</span>' }}
+    {{- section.settings.heading | escape | replace_first: 'CREV', crev_logo -}}
   </h1>
 </section>
 
@@ -21,7 +28,7 @@
       "id": "heading",
       "label": "Titolo",
       "default": "Devi CREVerci",
-      "info": "Le lettere CREV vengono mostrate in arancione."
+      "info": "La prima occorrenza di CREV viene sostituita dal logo ufficiale arancione."
     }
   ],
   "presets": [{ "name": "CREV — Banner camouflage" }]

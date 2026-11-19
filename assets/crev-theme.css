@@ -1,3 +1,7 @@
+:root {
+  --crev-label-font-family: Arial, Helvetica, sans-serif;
+}
+
 .crev-wordmark {
   display: inline-block;
   color: #4b4937;
@@ -48,11 +52,13 @@
 }
 
 .crev-acronym {
-  --crev-acronym-font-size: 3.6rem;
+  --crev-acronym-font-size: 2.8rem;
+  --crev-acronym-width: 18rem;
+  --crev-logo-height: calc(var(--crev-acronym-width) * 657 / 2734);
   position: relative;
   isolation: isolate;
   display: block;
-  width: 18rem;
+  width: var(--crev-acronym-width);
   height: 4.4rem;
   overflow: visible;
   line-height: 1;
@@ -100,7 +106,7 @@
 
 .crev-acronym__ending {
   position: absolute;
-  top: 100%;
+  top: calc(50% + var(--crev-logo-height) / 2 - 0.4rem);
   left: 50%;
   z-index: 2;
   display: block;
@@ -109,11 +115,11 @@
   background: transparent;
   color: rgb(var(--color-foreground));
   box-shadow: none;
-  font-family: var(--font-heading-family);
+  font-family: var(--crev-label-font-family);
   font-size: var(--crev-acronym-font-size);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: 0;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.06em;
   white-space: nowrap;
   writing-mode: vertical-rl;
   text-orientation: upright;
@@ -150,14 +156,14 @@
   }
 
   .crev-acronym {
-    --crev-acronym-font-size: 3.2rem;
-    width: 12.8rem;
+    --crev-acronym-font-size: 2.2rem;
+    --crev-acronym-width: 12.8rem;
   }
 }
 
 @media screen and (max-width: 359px) {
   .crev-acronym {
-    width: 12.2rem;
+    --crev-acronym-width: 12.2rem;
   }
 }
 
