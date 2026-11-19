@@ -10,8 +10,8 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
 - Logo nero ufficiale `crev nero.png` centrato e interattivo: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti sono più piccoli delle iniziali, ravvicinati al disegno e senza riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
-- Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, affiancate da 600 px e distribuite verso i lati con margini da 15 a 60 px; una colonna centrata sotto questa soglia.
-- Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify. Menu e ricerca nascosti, riattivabili con “Mostra il menu nella testata” e “Mostra la ricerca nella testata” nell’editor. Il menu selezionato e le pagine restano disponibili.
+- Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, affiancate da 600 px. L’area prodotti si ferma alla larghezza del tema (1200 px): oltre questa soglia la distanza tra le schede resta fissa e aumentano solo i margini esterni. Sotto 600 px resta una colonna centrata.
+- Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify e ingrandimento al passaggio del cursore pari al carrello (1,07×). Menu e ricerca nascosti, riattivabili con “Mostra il menu nella testata” e “Mostra la ricerca nella testata” nell’editor. Il menu selezionato e le pagine restano disponibili.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
 
 Le immagini e i prodotti segnaposto del tema vanno sostituiti con il catalogo reale. Prodotti, ordini, pagamenti, dominio e lingua predefinita si configurano nel pannello Shopify; non sono contenuti nel repository.
@@ -51,7 +51,9 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 Il banner usa direttamente il file `assets/Pattern_Camo.PNG`, senza velature o ripetizioni. L’immagine riempie il banner mantenendo le proporzioni, con ritaglio centrato ai bordi secondo la finestra: non presenta giunture fra copie del pattern. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG. Lo stesso disegno viene colorato in arancione nel titolo tramite una maschera, senza alterare il file.
 
-Titolo e completamenti verticali usano Arial Bold (con fallback Helvetica/sans-serif), scelto come corrispondenza visiva alla riga “Made in Italy 100% Cotton” di `assets/etichetta L.png`. Il PNG dell’etichetta è un riferimento grafico e non contiene il file del carattere. La famiglia è centralizzata nella variabile `--crev-label-font-family`.
+La home, i completamenti verticali e la finestra account usano Arial Bold (con fallback Helvetica/sans-serif), scelto come corrispondenza visiva alla riga “Made in Italy 100% Cotton” di `assets/etichetta L.png`. Il PNG dell’etichetta è un riferimento grafico e non contiene il file del carattere. La famiglia è centralizzata nella variabile `--crev-label-font-family`; nella finestra account viene applicata tramite le variabili ufficiali Shopify per titoli e testo, senza cambiare riquadri o colori.
+
+L’icona della voce “Profilo” dentro la finestra account è gestita da Shopify e non ha un punto di personalizzazione pubblico: il componente espone lo slot dell’avatar esterno, non le icone dei collegamenti interni. Riferimento: [API shopify-account](https://shopify.dev/docs/api/storefront-web-components/components/shopify-account).
 
 Per cambiare il camouflage del logo testuale della pagina con password:
 
