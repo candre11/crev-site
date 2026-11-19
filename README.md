@@ -48,13 +48,13 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 ## Camouflage personalizzato
 
-Il banner e le scritte del logo condividono un’unica immagine. Per usare il tuo file originale:
+Il banner usa direttamente il file `assets/Pattern_Camo.PNG` presente nella repository. Per cambiare separatamente il camouflage dei loghi testuali:
 
 1. Avvia `npm run dev` e apri il link dell’editor del tema mostrato dalla CLI.
 2. Vai in **Impostazioni tema → Camouflage CREV → Immagine camouflage**.
-3. Carica o seleziona l’immagine e salva: viene usata nel banner e nei loghi testuali.
+3. Carica o seleziona l’immagine e salva: viene usata nei loghi testuali, senza cambiare il banner.
 
-In assenza di una selezione rimane il pattern SVG incluso. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
+In assenza di una selezione, i loghi mantengono il pattern SVG incluso. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
 
 ## Struttura
 
@@ -62,8 +62,8 @@ In assenza di una selezione rimane il pattern SVG incluso. Il comando di svilupp
 - `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`: logo centrato e completamenti verticali interattivi.
 - `snippets/crev-wordmark.liquid`: logo testuale per la pagina con password.
 - `sections/crev-banner.liquid`: banner della homepage con titolo nero e CREV arancione.
-- `assets/section-crev-banner.css`, `assets/crev-camouflage.svg`: stile e pattern vettoriale predefinito del banner.
-- `snippets/crev-camouflage-url.liquid`: sorgente condivisa del camouflage selezionato nell’editor.
+- `assets/section-crev-banner.css`, `assets/Pattern_Camo.PNG`: stile e immagine camouflage del banner.
+- `assets/crev-camouflage.svg`, `snippets/crev-camouflage-url.liquid`: pattern predefinito e sorgente del camouflage dei loghi testuali.
 - `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.
 - `assets/section-crev-hero.css`: stile responsive della hero.
 - `templates/index.json`: composizione della homepage.

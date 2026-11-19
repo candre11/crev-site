@@ -2,7 +2,7 @@
 
 <section
   class="crev-banner"
-  style="--crev-banner-pattern: url('{% render 'crev-camouflage-url' %}');"
+  style="--crev-banner-pattern: url('{{ 'Pattern_Camo.PNG' | asset_url }}');"
 >
   <h1 class="crev-banner__heading">
     {{ section.settings.heading | escape | replace: 'CREV', '<span class="crev-banner__accent">CREV</span>' }}
