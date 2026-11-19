@@ -27,10 +27,16 @@
   }
 }
 
+.crev-storefront--index .collection > slider-component {
+  width: 100%;
+  max-width: none;
+  padding-inline: clamp(1.5rem, 4vw, 6rem);
+}
+
 .crev-storefront--index .product-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 38rem));
-  justify-content: center;
+  justify-content: space-between;
   gap: 3.2rem;
 }
 
@@ -43,7 +49,16 @@
 @media screen and (max-width: 599px) {
   .crev-storefront--index .product-grid {
     grid-template-columns: minmax(0, 38rem);
+    justify-content: center;
   }
+}
+
+.header__icons .crev-account-avatar {
+  display: block;
+  flex-shrink: 0;
+  width: 3.6rem;
+  height: 3.6rem;
+  object-fit: contain;
 }
 
 .crev-header-brand {
