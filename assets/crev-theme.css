@@ -51,14 +51,22 @@
   --crev-acronym-font-size: 3.6rem;
   position: relative;
   isolation: isolate;
-  display: inline-flex;
-  align-items: center;
+  display: block;
+  width: 18rem;
+  height: 4.4rem;
   overflow: visible;
   line-height: 1;
 }
 
-.crev-acronym .crev-wordmark {
-  font-size: var(--crev-acronym-font-size);
+.crev-acronym__artwork {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .crev-acronym__home {
@@ -68,12 +76,16 @@
 }
 
 .crev-acronym__letter {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: var(--crev-letter-left);
   z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.8rem;
+  width: var(--crev-letter-width);
+  height: 100%;
+  min-width: 0;
   min-height: 4.4rem;
   margin: 0;
   padding: 0;
@@ -84,18 +96,6 @@
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
-}
-
-.crev-acronym__initial {
-  background-position: calc(var(--crev-letter-index) * -2.4rem) 0;
-}
-
-.crev-acronym__dot {
-  position: relative;
-  z-index: 1;
-  width: 0.8rem;
-  text-align: center;
-  pointer-events: none;
 }
 
 .crev-acronym__ending {
@@ -151,14 +151,13 @@
 
   .crev-acronym {
     --crev-acronym-font-size: 3.2rem;
+    width: 12.8rem;
   }
+}
 
-  .crev-acronym__letter {
-    min-width: 2.4rem;
-  }
-
-  .crev-acronym__dot {
-    width: 0.4rem;
+@media screen and (max-width: 359px) {
+  .crev-acronym {
+    width: 12.2rem;
   }
 }
 

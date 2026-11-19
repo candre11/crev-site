@@ -8,7 +8,7 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 
 - Homepage con banner camouflage, titolo “Devi CREVerci” con CREV in arancione e due prodotti subito sotto, in due colonne da 600 px e una colonna sulle finestre più strette.
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
-- Logo C.R.E.V. camouflage centrato: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti hanno la stessa dimensione delle iniziali e nessun riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
+- Logo nero ufficiale `crev nero.png` centrato e interattivo: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti hanno la stessa dimensione delle iniziali e nessun riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
 - Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, centrate e affiancate da 600 px; una colonna sotto questa soglia.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
@@ -48,18 +48,20 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 ## Camouflage personalizzato
 
-Il banner usa direttamente il file `assets/Pattern_Camo.PNG` presente nella repository. Per cambiare separatamente il camouflage dei loghi testuali:
+Il banner usa direttamente il file `assets/Pattern_Camo.PNG`, senza velature. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG.
+
+Per cambiare il camouflage del logo testuale della pagina con password:
 
 1. Avvia `npm run dev` e apri il link dell’editor del tema mostrato dalla CLI.
 2. Vai in **Impostazioni tema → Camouflage CREV → Immagine camouflage**.
-3. Carica o seleziona l’immagine e salva: viene usata nei loghi testuali, senza cambiare il banner.
+3. Carica o seleziona l’immagine e salva: viene usata nel logo testuale della pagina con password, senza cambiare il banner o il logo ufficiale della testata.
 
-In assenza di una selezione, i loghi mantengono il pattern SVG incluso. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
+In assenza di una selezione, il logo della pagina con password mantiene il pattern SVG incluso. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
 
 ## Struttura
 
 - `assets/crev-theme.css`: identità visiva e disposizione responsive dei prodotti.
-- `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`: logo centrato e completamenti verticali interattivi.
+- `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`, `assets/crev nero.png`: logo ufficiale centrato e completamenti verticali sulle quattro lettere.
 - `snippets/crev-wordmark.liquid`: logo testuale per la pagina con password.
 - `sections/crev-banner.liquid`: banner della homepage con titolo nero e CREV arancione.
 - `assets/section-crev-banner.css`, `assets/Pattern_Camo.PNG`: stile e immagine camouflage del banner.

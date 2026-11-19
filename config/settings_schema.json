@@ -47,7 +47,7 @@
         "type": "image_picker",
         "id": "crev_camouflage",
         "label": "Immagine camouflage",
-        "info": "Immagine usata nei loghi testuali C.R.E.V. Il banner usa il file Pattern_Camo.PNG incluso nel tema."
+        "info": "Camouflage del logo testuale nella pagina con password."
       }
     ]
   },

@@ -4,10 +4,8 @@
   min-height: 28rem;
   padding: 4rem 2.4rem;
   background-color: #e8e3d2;
-  background-image:
-    linear-gradient(rgba(250, 247, 237, 0.6), rgba(250, 247, 237, 0.6)),
-    var(--crev-banner-pattern);
-  background-size: auto, 72rem 48rem;
+  background-image: var(--crev-banner-pattern);
+  background-size: 72rem 48rem;
   background-repeat: repeat;
 }
 
