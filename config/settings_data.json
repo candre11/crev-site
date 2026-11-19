@@ -7,55 +7,55 @@
       "color_schemes": {
         "scheme-1": {
           "settings": {
-            "background": "#EEE1CA",
+            "background": "#D8C4B9",
             "background_gradient": "",
             "text": "#2C251D",
             "button": "#403426",
-            "button_label": "#F4E8D2",
+            "button_label": "#D8C4B9",
             "secondary_button_label": "#403426",
             "shadow": "#221C15"
           }
         },
         "scheme-2": {
           "settings": {
-            "background": "#E1CFB2",
+            "background": "#D8C4B9",
             "background_gradient": "",
             "text": "#2C251D",
             "button": "#403426",
-            "button_label": "#F4E8D2",
+            "button_label": "#D8C4B9",
             "secondary_button_label": "#403426",
             "shadow": "#221C15"
           }
         },
         "scheme-3": {
           "settings": {
-            "background": "#D6BE98",
+            "background": "#D8C4B9",
             "background_gradient": "",
             "text": "#2C251D",
             "button": "#403426",
-            "button_label": "#F4E8D2",
+            "button_label": "#D8C4B9",
             "secondary_button_label": "#403426",
             "shadow": "#221C15"
           }
         },
         "scheme-4": {
           "settings": {
-            "background": "#C5AA82",
+            "background": "#D8C4B9",
             "background_gradient": "",
             "text": "#2C251D",
             "button": "#403426",
-            "button_label": "#F4E8D2",
+            "button_label": "#D8C4B9",
             "secondary_button_label": "#403426",
             "shadow": "#221C15"
           }
         },
         "scheme-5": {
           "settings": {
-            "background": "#E8D8BC",
+            "background": "#D8C4B9",
             "background_gradient": "",
             "text": "#2C251D",
             "button": "#403426",
-            "button_label": "#F4E8D2",
+            "button_label": "#D8C4B9",
             "secondary_button_label": "#403426",
             "shadow": "#221C15"
           }

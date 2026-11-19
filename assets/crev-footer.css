@@ -1,8 +1,8 @@
 .footer.crev-footer {
   --color-background: 237, 139, 58;
-  --color-foreground: 52, 59, 38;
-  --color-link: 52, 59, 38;
-  --color-button: 52, 59, 38;
+  --color-foreground: 119, 125, 90;
+  --color-link: 119, 125, 90;
+  --color-button: 119, 125, 90;
   --color-button-text: 237, 139, 58;
   --font-body-family: var(--crev-label-font-family);
   --font-heading-family: var(--crev-label-font-family);
