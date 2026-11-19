@@ -13,6 +13,7 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 - Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, affiancate da 600 px. L’area prodotti si ferma alla larghezza del tema (1200 px): oltre questa soglia la distanza tra le schede resta fissa e aumentano solo i margini esterni. Sotto 600 px resta una colonna centrata.
 - Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify e ingrandimento al passaggio del cursore pari al carrello (1,07×). Menu e ricerca nascosti, riattivabili con “Mostra il menu nella testata” e “Mostra la ricerca nella testata” nell’editor. Il menu selezionato e le pagine restano disponibili.
 - Layout responsive e traduzioni italiane già presenti in Dawn.
+- Pagina con password “Opening soon” con logo nero, sfondo camouflage a tutta pagina e riquadro arancione. Titolo e frase “be the first to know when the jungle opens” in marrone; la stampa della maglia crema segue il testo, alta 1 em. Accesso con password e iscrizione email mantengono i moduli Shopify.
 
 Le immagini e i prodotti segnaposto del tema vanno sostituiti con il catalogo reale. Prodotti, ordini, pagamenti, dominio e lingua predefinita si configurano nel pannello Shopify; non sono contenuti nel repository.
 
@@ -51,17 +52,17 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 Il banner usa direttamente il file `assets/Pattern_Camo.PNG`, senza velature o ripetizioni. L’immagine riempie il banner mantenendo le proporzioni, con ritaglio centrato ai bordi secondo la finestra: non presenta giunture fra copie del pattern. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG. Lo stesso disegno viene colorato in arancione nel titolo tramite una maschera, senza alterare il file.
 
-La home, i completamenti verticali e la finestra account usano Arial Bold (con fallback Helvetica/sans-serif), scelto come corrispondenza visiva alla riga “Made in Italy 100% Cotton” di `assets/etichetta L.png`. Il PNG dell’etichetta è un riferimento grafico e non contiene il file del carattere. La famiglia è centralizzata nella variabile `--crev-label-font-family`; nella finestra account viene applicata tramite le variabili ufficiali Shopify per titoli e testo, senza cambiare riquadri o colori.
+La home, i completamenti verticali, la pagina con password e la finestra account usano Arial Bold (con fallback Helvetica/sans-serif), scelto come corrispondenza visiva alla riga “Made in Italy 100% Cotton” di `assets/etichetta L.png`. Il PNG dell’etichetta è un riferimento grafico e non contiene il file del carattere. La famiglia è centralizzata nella variabile `--crev-label-font-family`; nella finestra account viene applicata tramite le variabili ufficiali Shopify per titoli e testo, senza cambiare riquadri o colori.
 
 L’icona della voce “Profilo” dentro la finestra account è gestita da Shopify e non ha un punto di personalizzazione pubblico: il componente espone lo slot dell’avatar esterno, non le icone dei collegamenti interni. Riferimento: [API shopify-account](https://shopify.dev/docs/api/storefront-web-components/components/shopify-account).
 
-Per cambiare il camouflage del logo testuale della pagina con password:
+Per cambiare il camouflage dello sfondo della pagina con password:
 
 1. Avvia `npm run dev` e apri il link dell’editor del tema mostrato dalla CLI.
 2. Vai in **Impostazioni tema → Camouflage CREV → Immagine camouflage**.
-3. Carica o seleziona l’immagine e salva: viene usata nel logo testuale della pagina con password, senza cambiare il banner o il logo ufficiale della testata.
+3. Carica o seleziona l’immagine e salva: viene usata come sfondo della pagina con password, senza cambiare il banner della home o i loghi ufficiali.
 
-In assenza di una selezione, il logo della pagina con password mantiene il pattern SVG incluso. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
+In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`, lo stesso file del banner della home. Il testo della pagina si modifica nella sezione “Banner di iscrizione email” dell’editor password; il blocco paragrafo include l’opzione “Mostra la stampa CREV alla fine del testo”. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
 
 ## Struttura
 
@@ -69,10 +70,10 @@ In assenza di una selezione, il logo della pagina con password mantiene il patte
 - `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`, `assets/crev nero.png`: logo ufficiale centrato e completamenti verticali sulle quattro lettere.
 - `snippets/crev-logo.liquid`: vista del logo originale, condivisa fra testata e titolo; maschera opzionale per il colore arancione.
 - `snippets/crev-account-avatar.liquid`, `assets/scimmia.png`: immagine personalizzata nel componente account Shopify.
-- `snippets/crev-wordmark.liquid`: logo testuale per la pagina con password.
+- `layout/password.liquid`, `assets/crev-password.css`, `sections/main-password-header.liquid`, `templates/password.json`: pagina di lancio con logo nero, sfondo camo e riquadro arancione.
 - `sections/crev-banner.liquid`: banner della homepage con titolo crema e logo CREV arancione.
 - `assets/section-crev-banner.css`, `assets/Pattern_Camo.PNG`: stile e immagine camouflage del banner.
-- `assets/crev-camouflage.svg`, `snippets/crev-camouflage-url.liquid`: pattern predefinito e sorgente del camouflage dei loghi testuali.
+- `snippets/crev-camouflage-url.liquid`: sorgente dello sfondo della pagina con password, con `Pattern_Camo.PNG` come predefinito.
 - `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.
 - `assets/section-crev-hero.css`: stile responsive della hero.
 - `templates/index.json`: composizione della homepage.

@@ -47,7 +47,7 @@
         "type": "image_picker",
         "id": "crev_camouflage",
         "label": "Immagine camouflage",
-        "info": "Camouflage del logo testuale nella pagina con password."
+        "info": "Sfondo della pagina con password. Se vuoto, usa Pattern_Camo.PNG incluso nel tema."
       }
     ]
   },
