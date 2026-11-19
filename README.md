@@ -6,11 +6,11 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 
 ## Cosa include
 
-- Homepage con banner camouflage continuo, titolo “Devi CREVerci” in crema con il logo CREV arancione e due prodotti subito sotto, in due colonne da 600 px e una colonna sulle finestre più strette.
+- Homepage con `banner.png` a tutto schermo, senza velature, e testata trasparente sovrapposta: logo CREV interattivo, scimmia account e carrello. Il ritaglio mantiene il focus sulla scimmia anche su mobile. I due prodotti seguono la foto, in due colonne da 600 px e una colonna sulle finestre più strette.
 - Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
-- Logo nero ufficiale `crev nero.png` centrato e interattivo: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti sono più piccoli delle iniziali, ravvicinati al disegno e senza riquadro. Durante l’apertura il titolo del banner sfuma per evitare sovrapposizioni. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
+- Logo nero ufficiale `crev nero.png` centrato e interattivo: passando sulle lettere si rivelano in verticale Clothing, Rejects, Every e Verges. I completamenti sono più piccoli delle iniziali, ravvicinati al disegno e senza riquadro. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
-- Banner a tutta larghezza con altezza fissa; schede prodotto fino a 380 px, affiancate da 600 px. L’area prodotti si ferma alla larghezza del tema (1200 px): oltre questa soglia la distanza tra le schede resta fissa e aumentano solo i margini esterni. Sotto 600 px resta una colonna centrata.
+- Foto iniziale a tutta larghezza e alta quanto la finestra visibile, senza la precedente fascia camouflage; schede prodotto fino a 380 px, affiancate da 600 px. L’area prodotti si ferma alla larghezza del tema (1200 px): oltre questa soglia la distanza tra le schede resta fissa e aumentano solo i margini esterni. Sotto 600 px resta una colonna centrata.
 - Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify e ingrandimento al passaggio del cursore pari al carrello (1,07×). Menu e ricerca nascosti, riattivabili con “Mostra il menu nella testata” e “Mostra la ricerca nella testata” nell’editor. Il menu selezionato e le pagine restano disponibili.
 - Layout responsive e traduzioni italiane già presenti in Dawn. Palette crema `#d8c4b9`, verde militare `#777d5a` e arancione.
 - Footer unico arancione (`#ed8b3a`) con testi verde militare (`#777d5a`). In basso a sinistra mostra il campo email e, subito sotto, “iscriviti alla newsletter”; seguono copyright, Powered by Shopify e informative, a 3 px dai bordi inferiore e sinistro. Social, logo C, selettori e icone di pagamento sono al momento nascosti. Restano attivi il modulo newsletter e i collegamenti alle informative pubblicate su Shopify; nascondere le icone non cambia i metodi di pagamento al checkout.
@@ -57,13 +57,13 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 
 1. Imposta il nome negozio **CREV**, il logo e l’italiano come lingua predefinita, se desiderato.
 2. Aggiungi i capi e le varianti taglia/colore con prezzi, foto e disponibilità reali.
-3. Nell’editor tema seleziona la collezione della homepage: verranno mostrati i primi due prodotti del suo ordinamento. Il titolo si modifica nella sezione **CREV — Banner camouflage**; le lettere CREV vengono colorate in arancione.
+3. Nell’editor tema seleziona la collezione della homepage: verranno mostrati i primi due prodotti del suo ordinamento. La foto iniziale usa il file `assets/banner.png`; la testata è sovrapposta solo in homepage e mantiene il normale comportamento sulle altre pagine.
 4. Configura il menu principale (ad esempio Shop e Contatti) e i collegamenti del footer.
 5. Configura pagamenti, spedizioni e informative nel pannello Shopify. Verifica un ordine di prova prima di pubblicare.
 
-## Camouflage personalizzato
+## Immagini e identità visiva
 
-Il banner usa direttamente il file `assets/Pattern_Camo.PNG`, senza velature o ripetizioni. L’immagine riempie il banner mantenendo le proporzioni, con ritaglio centrato ai bordi secondo la finestra: non presenta giunture fra copie del pattern. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG. Lo stesso disegno viene colorato in arancione nel titolo tramite una maschera, senza alterare il file.
+La foto iniziale usa `assets/banner.png`, con proporzioni conservate e riempimento della finestra (`object-fit: cover`). Il punto di ritaglio orizzontale al 42% mantiene in evidenza la scimmia nelle finestre strette. La testata della home è trasparente e scorre insieme alla foto; account e carrello conservano i componenti Shopify. Il camouflage resta sulla pagina con password. La testata usa il logo originale `assets/crev nero.png`, con quattro aree interattive allineate alle lettere. Il PNG è conservato integro: il ritaglio dei soli margini trasparenti è gestito nella vista SVG.
 
 La home, i completamenti verticali, la pagina con password e la finestra account usano Arial Bold (con fallback Helvetica/sans-serif), scelto come corrispondenza visiva alla riga “Made in Italy 100% Cotton” di `assets/etichetta L.png`. Il PNG dell’etichetta è un riferimento grafico e non contiene il file del carattere. La famiglia è centralizzata nella variabile `--crev-label-font-family`; nella finestra account viene applicata tramite le variabili ufficiali Shopify per titoli e testo, senza cambiare riquadri o colori.
 
@@ -73,9 +73,9 @@ Per cambiare il camouflage dello sfondo della pagina con password:
 
 1. Avvia `npm run dev:editor` e apri il link dell’editor del tema mostrato dalla CLI.
 2. Vai in **Impostazioni tema → Camouflage CREV → Immagine camouflage**.
-3. Carica o seleziona l’immagine e salva: viene usata come sfondo della pagina con password, senza cambiare il banner della home o i loghi ufficiali.
+3. Carica o seleziona l’immagine e salva: viene usata come sfondo della pagina con password, senza cambiare la foto della home o i loghi ufficiali.
 
-In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`, lo stesso file del banner della home. Il testo della pagina si modifica nella sezione “Banner di iscrizione email” dell’editor password; il blocco paragrafo include l’opzione “Mostra la stampa CREV alla fine del testo”. La modalità `dev:editor` riporta nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
+In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`. Il testo della pagina si modifica nella sezione “Banner di iscrizione email” dell’editor password; il blocco paragrafo include l’opzione “Mostra la stampa CREV alla fine del testo”. La modalità `dev:editor` riporta nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
 
 ## Struttura
 
@@ -85,8 +85,9 @@ In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`, lo stesso 
 - `snippets/crev-logo.liquid`: vista del logo originale, condivisa fra testata e titolo; maschera opzionale per il colore arancione.
 - `snippets/crev-account-avatar.liquid`, `assets/scimmia.png`: immagine personalizzata nel componente account Shopify.
 - `layout/password.liquid`, `assets/crev-password.css`, `sections/main-password-header.liquid`, `templates/password.json`: pagina di lancio con logo nero, sfondo camo e riquadro arancione.
-- `sections/crev-banner.liquid`: banner della homepage con titolo crema e logo CREV arancione.
-- `assets/section-crev-banner.css`, `assets/Pattern_Camo.PNG`: stile e immagine camouflage del banner.
+- `sections/crev-photo-hero.liquid`, `assets/section-crev-photo-hero.css`, `assets/banner.png`: foto iniziale a tutto schermo.
+- `sections/crev-banner.liquid`, `assets/section-crev-banner.css`: precedente banner camouflage, rimosso dalla homepage.
+- `assets/Pattern_Camo.PNG`: pattern usato nella pagina con password.
 - `snippets/crev-camouflage-url.liquid`: sorgente dello sfondo della pagina con password, con `Pattern_Camo.PNG` come predefinito.
 - `sections/crev-hero.liquid`: precedente sezione CREV, ancora disponibile nell’editor.
 - `assets/section-crev-hero.css`: stile responsive della hero.

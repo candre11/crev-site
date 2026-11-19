@@ -1,10 +1,8 @@
 {
   "sections": {
-    "crev_banner": {
-      "type": "crev-banner",
-      "settings": {
-        "heading": "Devi CREVerci"
-      }
+    "crev_photo_hero": {
+      "type": "crev-photo-hero",
+      "settings": {}
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -36,7 +34,7 @@
     }
   },
   "order": [
-    "crev_banner",
+    "crev_photo_hero",
     "featured_collection"
   ]
 }

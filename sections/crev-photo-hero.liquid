@@ -1,0 +1,25 @@
+{{ 'section-crev-photo-hero.css' | asset_url | stylesheet_tag }}
+
+<section class="crev-photo-hero" aria-label="CREV">
+  <h1 class="visually-hidden">CREV</h1>
+  <img
+    class="crev-photo-hero__image"
+    src="{{ 'banner.png' | asset_url }}"
+    alt="Scimmia con felpa CREV in una stanza verde militare"
+    width="1678"
+    height="937"
+    loading="eager"
+    fetchpriority="high"
+  >
+</section>
+
+{% schema %}
+{
+  "name": "CREV — Foto fullscreen",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [],
+  "presets": [{ "name": "CREV — Foto fullscreen" }]
+}
+{% endschema %}

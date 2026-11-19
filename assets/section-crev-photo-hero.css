@@ -1,0 +1,17 @@
+.crev-photo-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #777d5a;
+}
+
+.crev-photo-hero__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Keep the monkey visible when the landscape photo is cropped on mobile. */
+  object-position: 42% 50%;
+}

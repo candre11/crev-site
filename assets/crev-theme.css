@@ -11,6 +11,23 @@
   --font-heading-weight: 700;
 }
 
+/* On the homepage, the controls sit over the photo without a separate bar. */
+.crev-storefront--index .section-header {
+  position: absolute;
+  inset: 0 0 auto;
+  width: 100%;
+  margin: 0;
+}
+
+.crev-storefront--index .header-wrapper {
+  background: transparent;
+  border-bottom: 0;
+}
+
+.crev-storefront--index .header {
+  max-width: none;
+}
+
 .crev-storefront--index .collection > slider-component {
   width: 100%;
   max-width: var(--page-width);
@@ -150,10 +167,6 @@ shopify-account.header__icon:focus-within .crev-account-avatar {
   outline-offset: 0.2rem;
 }
 
-.crev-storefront:has(.crev-acronym__letter[aria-expanded='true']) .crev-banner__heading {
-  opacity: 0;
-}
-
 @media screen and (max-width: 749px) {
   .header.header--mobile-center {
     grid-template-columns: minmax(4.4rem, 1fr) auto minmax(4.4rem, 1fr);
@@ -169,7 +182,8 @@ shopify-account.header__icon:focus-within .crev-account-avatar {
 
 @media screen and (max-width: 359px) {
   .crev-acronym {
-    --crev-acronym-width: 12.2rem;
+    --crev-acronym-font-size: 1.8rem;
+    --crev-acronym-width: 10rem;
   }
 }
 
