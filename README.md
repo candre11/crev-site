@@ -27,6 +27,18 @@ npm ci
 npm run dev
 ```
 
+`npm run dev` usa i file locali e carica il tema di sviluppo, senza riscaricare automaticamente le modifiche dell’editor Shopify. Se devi cambiare impostazioni o sezioni nell’editor e conservarle nella repo, usa invece `npm run dev:editor`: questa modalità abilita `--theme-editor-sync`. Prima di aggiornare con Git, ferma il server e salva o metti in stash le modifiche locali.
+
+Se un `git pull` si interrompe perché `sections/footer-group.json` contiene modifiche locali, puoi conservarle e poi aggiornare:
+
+```sh
+git stash push -m "Backup footer Shopify" -- sections/footer-group.json
+git pull --ff-only
+npm run dev
+```
+
+Il backup resta nello stash; recuperalo solo dopo aver controllato le differenze rispetto al footer aggiornato.
+
 Il dominio è definito nell’ambiente `crev` del file `shopify.theme.toml`. La CLI avvia il flusso di accesso Shopify nel browser e restituisce il link di anteprima del tema di sviluppo. Non salvare password o token nel repository.
 
 Il tema Liquid viene renderizzato da Shopify: non è un’applicazione React e non si avvia con un server statico locale.
@@ -59,11 +71,11 @@ L’icona della voce “Profilo” dentro la finestra account è gestita da Shop
 
 Per cambiare il camouflage dello sfondo della pagina con password:
 
-1. Avvia `npm run dev` e apri il link dell’editor del tema mostrato dalla CLI.
+1. Avvia `npm run dev:editor` e apri il link dell’editor del tema mostrato dalla CLI.
 2. Vai in **Impostazioni tema → Camouflage CREV → Immagine camouflage**.
 3. Carica o seleziona l’immagine e salva: viene usata come sfondo della pagina con password, senza cambiare il banner della home o i loghi ufficiali.
 
-In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`, lo stesso file del banner della home. Il testo della pagina si modifica nella sezione “Banner di iscrizione email” dell’editor password; il blocco paragrafo include l’opzione “Mostra la stampa CREV alla fine del testo”. Il comando di sviluppo include `--theme-editor-sync` per riportare nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
+In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`, lo stesso file del banner della home. Il testo della pagina si modifica nella sezione “Banner di iscrizione email” dell’editor password; il blocco paragrafo include l’opzione “Mostra la stampa CREV alla fine del testo”. La modalità `dev:editor` riporta nei file locali le modifiche fatte nell’editor Shopify; salva queste modifiche prima di sincronizzare ulteriori aggiornamenti Git.
 
 ## Struttura
 

@@ -7,7 +7,8 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "shopify theme dev --environment crev --theme-editor-sync",
+    "dev": "shopify theme dev --environment crev",
+    "dev:editor": "shopify theme dev --environment crev --theme-editor-sync",
     "check": "shopify theme check --fail-level error",
     "package": "shopify theme package",
     "push:preview": "shopify theme push --environment crev --unpublished"
