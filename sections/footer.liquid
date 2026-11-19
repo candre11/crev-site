@@ -168,9 +168,6 @@
         >
           {%- if section.settings.newsletter_enable -%}
             <div class="footer-block__newsletter">
-              {%- if section.settings.newsletter_heading != blank -%}
-                <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
-              {%- endif -%}
               {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <div class="newsletter-form__field-wrapper">
@@ -234,6 +231,9 @@
                   </h3>
                 {%- endif -%}
               {%- endform -%}
+              {%- if section.settings.newsletter_heading != blank -%}
+                <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
+              {%- endif -%}
             </div>
           {%- endif -%}
 
@@ -326,16 +326,6 @@
         {%- endif -%}
       </div>
     </div>
-  </div>
-  <div class="crev-footer__mark" aria-hidden="true">
-    <svg viewBox="666 703 1637 1494" width="1637" height="1494" focusable="false">
-      <defs>
-        <mask id="crev-footer-c-{{ section.id }}" maskUnits="userSpaceOnUse" x="666" y="703" width="1637" height="1494" style="mask-type: alpha;">
-          <image href="{{ 'c nera.png' | asset_url | escape }}" width="3000" height="3000" />
-        </mask>
-      </defs>
-      <rect x="666" y="703" width="1637" height="1494" fill="currentColor" mask="url(#crev-footer-c-{{ section.id }})" />
-    </svg>
   </div>
 </footer>
 
