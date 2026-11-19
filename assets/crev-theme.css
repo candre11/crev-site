@@ -28,6 +28,11 @@
   max-width: none;
 }
 
+.crev-storefront--index .crev-acronym {
+  --color-foreground: 216, 196, 185;
+  color: rgb(var(--color-foreground));
+}
+
 .crev-storefront--index .collection > slider-component {
   width: 100%;
   max-width: var(--page-width);

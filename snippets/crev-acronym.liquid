@@ -6,7 +6,13 @@
   <a href="{{ routes.root_url }}" class="crev-acronym__home focus-inset" aria-label="C.R.E.V. — Home">
     <span class="visually-hidden">Home</span>
   </a>
-  {% render 'crev-logo', logo_class: 'crev-acronym__artwork' %}
+  {%- liquid
+    assign logo_mask_id = ''
+    if request.page_type == 'index'
+      assign logo_mask_id = 'crev-header-logo-' | append: section.id
+    endif
+  -%}
+  {% render 'crev-logo', logo_class: 'crev-acronym__artwork', mask_id: logo_mask_id %}
   {%- assign initials = 'C,R,E,V' | split: ',' -%}
   {%- assign endings = 'lothing,ejects,very,erges' | split: ',' -%}
   {%- assign letter_lefts = '0,27.542,50.549,75.201' | split: ',' -%}
