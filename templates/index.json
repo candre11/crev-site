@@ -2,7 +2,11 @@
   "sections": {
     "crev_photo_hero": {
       "type": "crev-photo-hero",
-      "settings": {}
+      "settings": {
+        "focus_horizontal": 33,
+        "cream_product": "cream-tribe-longsleeve",
+        "camo_product": "tribe-longsleeve-camo"
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
