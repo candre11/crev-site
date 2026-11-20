@@ -1,41 +1,53 @@
 {{ 'section-crev-photo-hero.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'crev-photo-pan.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign cream_product = section.settings.cream_product | default: all_products['cream-tribe-longsleeve']
   assign camo_product = section.settings.camo_product | default: all_products['tribe-longsleeve-camo']
 -%}
 
-<section class="crev-photo-hero" aria-label="CREV" style="--crev-hero-focus-x: {{ section.settings.focus_horizontal | default: 33 }}%;">
+<section class="crev-photo-hero" aria-label="CREV">
   <h1 class="visually-hidden">CREV</h1>
-  <div class="crev-photo-hero__scene">
-    <img
-      class="crev-photo-hero__image"
-      src="{{ 'banner-camerino-rustico.png' | asset_url }}"
-      alt="Scimpanzé con Longsleeve Cream, abito a sinistra e Longsleeve Camo appesa a destra"
-      width="1679"
-      height="937"
-      loading="eager"
-      fetchpriority="high"
-    >
-    {%- if cream_product != blank or camo_product != blank -%}
-      <div class="crev-photo-hero__products" role="group" aria-label="Scopri le maglie CREV">
-        {%- if cream_product != blank -%}
-          <a href="{{ cream_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--cream" aria-label="Scopri la Longsleeve Cream">
-            <svg viewBox="568 277 383 301" width="383" height="301" aria-hidden="true" focusable="false">
-              <polygon points="650,277 674,305 720,332 775,339 819,323 850,294 869,278 900,321 924,389 951,451 945,503 921,543 891,532 881,514 859,523 841,552 791,572 720,578 651,560 636,522 607,505 585,463 568,408 581,349 609,308" />
-            </svg>
-          </a>
-        {%- endif -%}
-        {%- if camo_product != blank -%}
-          <a href="{{ camo_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--camo" aria-label="Scopri la Longsleeve Camo">
-            <svg viewBox="1061 154 408 441" width="408" height="441" aria-hidden="true" focusable="false">
-              <polygon points="1203,158 1170,172 1137,193 1126,208 1113,249 1093,318 1077,408 1061,548 1129,571 1150,456 1148,575 1374,595 1375,447 1393,590 1469,577 1443,451 1428,339 1410,255 1398,206 1366,184 1316,154 1298,183 1259,198 1223,184" />
-            </svg>
-          </a>
+  <crev-photo-pan
+    class="crev-photo-hero__viewport"
+    data-focus="{{ section.settings.focus_horizontal | default: 28 }}"
+    tabindex="0"
+    role="region"
+    aria-label="Foto CREV: scorri in orizzontale per esplorare i capi"
+  >
+    <div class="crev-photo-hero__canvas">
+      <div class="crev-photo-hero__scene">
+        <img
+          class="crev-photo-hero__image"
+          src="{{ 'banner-camerino-rustico.png' | asset_url }}"
+          alt="Scimpanzé con Longsleeve Cream, abito a sinistra e Longsleeve Camo appesa a destra"
+          width="1679"
+          height="937"
+          loading="eager"
+          fetchpriority="high"
+          draggable="false"
+        >
+        {%- if cream_product != blank or camo_product != blank -%}
+          <div class="crev-photo-hero__products" role="group" aria-label="Scopri le maglie CREV">
+            {%- if cream_product != blank -%}
+              <a href="{{ cream_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--cream" aria-label="Scopri la Longsleeve Cream" draggable="false">
+                <svg viewBox="568 277 383 301" width="383" height="301" aria-hidden="true" focusable="false">
+                  <polygon points="650,277 674,305 720,332 775,339 819,323 850,294 869,278 900,321 924,389 951,451 945,503 921,543 891,532 881,514 859,523 841,552 791,572 720,578 651,560 636,522 607,505 585,463 568,408 581,349 609,308" />
+                </svg>
+              </a>
+            {%- endif -%}
+            {%- if camo_product != blank -%}
+              <a href="{{ camo_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--camo" aria-label="Scopri la Longsleeve Camo" draggable="false">
+                <svg viewBox="1061 154 408 441" width="408" height="441" aria-hidden="true" focusable="false">
+                  <polygon points="1203,158 1170,172 1137,193 1126,208 1113,249 1093,318 1077,408 1061,548 1129,571 1150,456 1148,575 1374,595 1375,447 1393,590 1469,577 1443,451 1428,339 1410,255 1398,206 1366,184 1316,154 1298,183 1259,198 1223,184" />
+                </svg>
+              </a>
+            {%- endif -%}
+          </div>
         {%- endif -%}
       </div>
-    {%- endif -%}
-  </div>
+    </div>
+  </crev-photo-pan>
   {%- if cream_product == blank and camo_product == blank and request.design_mode -%}
     <p class="crev-photo-hero__setup">Seleziona Longsleeve Cream e Longsleeve Camo nelle impostazioni di questa sezione per attivare i collegamenti sulle maglie.</p>
   {%- endif -%}
@@ -55,9 +67,9 @@
       "max": 100,
       "step": 1,
       "unit": "%",
-      "label": "Focus orizzontale",
-      "default": 33,
-      "info": "Valori più bassi mostrano più abito a sinistra; valori più alti mostrano più scimmia e maglia appesa."
+      "label": "Focus orizzontale iniziale",
+      "default": 28,
+      "info": "Inquadratura all’apertura. Valori più bassi mostrano più abito a sinistra. La foto resta scorribile in orizzontale."
     },
     {
       "type": "product",

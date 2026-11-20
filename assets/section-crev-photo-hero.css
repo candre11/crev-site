@@ -1,5 +1,4 @@
 .crev-photo-hero {
-  --crev-hero-focus-x: 33%;
   --crev-hero-height: 100vh;
   --crev-hero-height: 100svh;
   position: relative;
@@ -9,15 +8,53 @@
   background: #777d5a;
 }
 
-/* Photo and product outlines share one plane, so resizing cannot separate them. */
+.crev-photo-hero__viewport {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.crev-photo-hero__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.crev-photo-hero__viewport:focus-visible {
+  outline: 2px solid #d8c4b9;
+  outline-offset: -4px;
+}
+
+.crev-photo-hero__viewport.is-pannable {
+  cursor: grab;
+}
+
+.crev-photo-hero__viewport.is-dragging,
+.crev-photo-hero__viewport.is-dragging .crev-photo-hero__product {
+  cursor: grabbing;
+}
+
+.crev-photo-hero__canvas {
+  position: relative;
+  width: 100%;
+  min-width: calc(var(--crev-hero-height) * 1679 / 937);
+  height: 100%;
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* Photo and product outlines travel together inside the horizontal viewport. */
 .crev-photo-hero__scene {
   position: absolute;
   top: 50%;
-  left: var(--crev-hero-focus-x);
+  left: 0;
   width: 100%;
-  min-width: calc(var(--crev-hero-height) * 1679 / 937);
   aspect-ratio: 1679 / 937;
-  transform: translate(calc(0% - var(--crev-hero-focus-x)), -50%);
+  transform: translateY(-50%);
 }
 
 .crev-photo-hero__image,
@@ -88,11 +125,4 @@
   color: #d8c4b9;
   font-size: 1.4rem;
   line-height: 1.4;
-}
-
-@media (max-aspect-ratio: 4 / 5) {
-  /* The hanging shirt is outside this crop; its product card remains below. */
-  .crev-photo-hero__product--camo {
-    display: none;
-  }
 }
