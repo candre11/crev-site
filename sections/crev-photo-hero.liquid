@@ -1,8 +1,10 @@
 {{ 'section-crev-photo-hero.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'crev-photo-pan.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'crev-hero-joke.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign cream_product = section.settings.cream_product | default: all_products['cream-tribe-longsleeve']
+  assign cream_link = section.settings.cream_link | default: cream_product.url
   assign camo_product = section.settings.camo_product | default: all_products['tribe-longsleeve-camo']
 -%}
 
@@ -27,28 +29,57 @@
           fetchpriority="high"
           draggable="false"
         >
-        {%- if cream_product != blank or camo_product != blank -%}
-          <div class="crev-photo-hero__products" role="group" aria-label="Scopri le maglie CREV">
-            {%- if cream_product != blank -%}
-              <a href="{{ cream_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--cream" aria-label="Scopri la Longsleeve Cream" draggable="false">
-                <svg viewBox="568 277 383 301" width="383" height="301" aria-hidden="true" focusable="false">
-                  <polygon points="650,277 674,305 720,332 775,339 819,323 850,294 869,278 900,321 924,389 951,451 945,503 921,543 891,532 881,514 859,523 841,552 791,572 720,578 651,560 636,522 607,505 585,463 568,408 581,349 609,308" />
-                </svg>
-              </a>
-            {%- endif -%}
-            {%- if camo_product != blank -%}
-              <a href="{{ camo_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--camo" aria-label="Scopri la Longsleeve Camo" draggable="false">
-                <svg viewBox="1061 154 408 441" width="408" height="441" aria-hidden="true" focusable="false">
-                  <polygon points="1203,158 1170,172 1137,193 1126,208 1113,249 1093,318 1077,408 1061,548 1129,571 1150,456 1148,575 1374,595 1375,447 1393,590 1469,577 1443,451 1428,339 1410,255 1398,206 1366,184 1316,154 1298,183 1259,198 1223,184" />
-                </svg>
-              </a>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
+        <div class="crev-photo-hero__products" role="group" aria-label="Esplora i capi nella foto">
+          <button
+            type="button"
+            class="crev-photo-hero__product crev-photo-hero__product--suit"
+            aria-label="Scopri l’abito"
+            aria-haspopup="dialog"
+            aria-controls="CrevJoke-{{ section.id }}"
+            data-crev-joke-open
+          >
+            <svg viewBox="147 153 323 562" width="323" height="562" aria-hidden="true" focusable="false">
+              <polygon points="283,153 323,161 365,178 415,205 434,265 451,347 470,422 438,481 438,598 414,690 352,707 312,653 302,710 254,715 172,671 148,590 147,414 160,288 173,219 218,183" />
+            </svg>
+          </button>
+          {%- if cream_link != blank -%}
+            <a href="{{ cream_link | escape }}" class="crev-photo-hero__product crev-photo-hero__product--cream" aria-label="Scopri la Longsleeve Cream" draggable="false">
+              <svg viewBox="568 277 383 301" width="383" height="301" aria-hidden="true" focusable="false">
+                <polygon points="650,277 674,305 720,332 775,339 819,323 850,294 869,278 900,321 924,389 951,451 945,503 921,543 891,532 881,514 859,523 841,552 791,572 720,578 651,560 636,522 607,505 585,463 568,408 581,349 609,308" />
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if camo_product != blank -%}
+            <a href="{{ camo_product.url | escape }}" class="crev-photo-hero__product crev-photo-hero__product--camo" aria-label="Scopri la Longsleeve Camo" draggable="false">
+              <svg viewBox="1061 154 408 441" width="408" height="441" aria-hidden="true" focusable="false">
+                <polygon points="1203,158 1170,172 1137,193 1126,208 1113,249 1093,318 1077,408 1061,548 1129,571 1150,456 1148,575 1374,595 1375,447 1393,590 1469,577 1443,451 1428,339 1410,255 1398,206 1366,184 1316,154 1298,183 1259,198 1223,184" />
+              </svg>
+            </a>
+          {%- endif -%}
+        </div>
       </div>
     </div>
   </crev-photo-pan>
-  {%- if cream_product == blank and camo_product == blank and request.design_mode -%}
+  <crev-hero-joke>
+    <dialog
+      id="CrevJoke-{{ section.id }}"
+      class="crev-photo-hero__joke"
+      aria-labelledby="CrevJokeTitle-{{ section.id }}"
+      aria-describedby="CrevJokeHelp-{{ section.id }}"
+    >
+      <h2 id="CrevJokeTitle-{{ section.id }}" class="crev-photo-hero__joke-title" tabindex="-1" autofocus>SEI SERIO?</h2>
+      <img
+        class="crev-photo-hero__joke-monkey"
+        src="{{ 'scimmia.png' | asset_url }}"
+        alt=""
+        width="3000"
+        height="3000"
+        decoding="async"
+      >
+      <p id="CrevJokeHelp-{{ section.id }}" class="visually-hidden">Premi Esc o fai clic in qualsiasi punto per chiudere.</p>
+    </dialog>
+  </crev-hero-joke>
+  {%- if cream_link == blank and camo_product == blank and request.design_mode -%}
     <p class="crev-photo-hero__setup">Seleziona Longsleeve Cream e Longsleeve Camo nelle impostazioni di questa sezione per attivare i collegamenti sulle maglie.</p>
   {%- endif -%}
 </section>
@@ -76,6 +107,12 @@
       "id": "cream_product",
       "label": "Maglia indossata — Cream",
       "info": "Se vuoto, usa il prodotto cream-tribe-longsleeve."
+    },
+    {
+      "type": "url",
+      "id": "cream_link",
+      "label": "Link diretto Cream (facoltativo)",
+      "info": "Se compilato, usa questo collegamento al posto del prodotto selezionato."
     },
     {
       "type": "product",
