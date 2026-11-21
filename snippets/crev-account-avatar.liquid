@@ -1,5 +1,6 @@
-{%- if request.page_type == 'index' -%}
-  {%- assign avatar_mask_id = 'crev-account-avatar-' | append: section.id -%}
+{%- if request.page_type == 'index' and template.suffix == blank -%}
+  {%- assign default_avatar_mask_id = 'crev-account-avatar-' | append: section.id -%}
+  {%- assign avatar_mask_id = avatar_id | default: default_avatar_mask_id -%}
   <svg
     class="crev-account-avatar"
     viewBox="0 0 3000 3000"

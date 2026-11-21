@@ -8,7 +8,7 @@
   </a>
   {%- liquid
     assign logo_mask_id = ''
-    if request.page_type == 'index'
+    if request.page_type == 'index' and template.suffix == blank
       assign logo_mask_id = 'crev-header-logo-' | append: section.id
     endif
   -%}

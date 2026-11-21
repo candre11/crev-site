@@ -1,0 +1,59 @@
+{%- liquid
+  assign home_current = false
+  assign products_current = false
+  assign about_current = false
+  assign about_url = section.settings.about_page_url
+  if about_url == blank
+    assign about_url = routes.root_url | append: '?view=chi-siamo'
+  endif
+  if template.name == 'index' and template.suffix == 'chi-siamo'
+    assign about_current = true
+  elsif section.settings.about_page_url != blank
+    assign about_path = about_url | remove: shop.url | remove: request.origin | split: '?' | first
+    if request.path == about_path
+      assign about_current = true
+    endif
+  endif
+  if request.page_type == 'index' and template.suffix == blank
+    assign home_current = true
+  elsif request.page_type == 'collection' and collection.handle == 'all'
+    assign products_current = true
+  endif
+  assign menu_avatar_id = 'crev-menu-avatar-' | append: section.id
+-%}
+
+<header-drawer class="crev-navigation" data-breakpoint="desktop">
+  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="Menu" aria-controls="menu-drawer">
+      <span>
+        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__inner-container">
+        <div class="menu-drawer__navigation-container">
+          <nav class="menu-drawer__navigation" aria-label="Menu principale">
+            <ul class="menu-drawer__menu list-menu crev-menu-links" role="list">
+              <li>
+                <a href="{{ routes.root_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset"{% if home_current %} aria-current="page"{% endif %}>Home</a>
+              </li>
+              <li>
+                <a href="{{ routes.all_products_collection_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset"{% if products_current %} aria-current="page"{% endif %}>Prodotti</a>
+              </li>
+              <li>
+                <a href="{{ about_url | escape }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset"{% if about_current %} aria-current="page"{% endif %}>Chi siamo</a>
+              </li>
+              <li>
+                <a href="{{ routes.account_url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset"{% if request.page_type contains 'customers/' %} aria-current="page"{% endif %}>
+                  <span class="crev-menu-avatar">{% render 'crev-account-avatar', avatar_id: menu_avatar_id %}</span>
+                  Profilo
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </details>
+</header-drawer>

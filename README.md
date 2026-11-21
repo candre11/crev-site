@@ -7,11 +7,12 @@ Basato sul tema ufficiale [Dawn 16.2.0](https://github.com/Shopify/dawn/tree/v16
 ## Cosa include
 
 - Homepage con la foto “Camerino Rustico con Scimpanzé e Maglie Appese” a tutto schermo, senza velature, e testata trasparente sovrapposta: logo CREV interattivo, scimmia account e carrello. L’inquadratura iniziale dà più spazio all’abito a sinistra. La foto si esplora in orizzontale con il dito, il trackpad, trascinando con il mouse o usando la tastiera; le maglie restano cliccabili. Le due maglie nella foto sono cliccabili: quella indossata apre Longsleeve Cream, quella appesa a destra apre Longsleeve Camo. Il footer segue direttamente la foto: la fascia prodotti è stata rimossa dalla home. Cliccando sull’abito compare “SEI SERIO?” con `scimmia.png` sotto e il banner sfocato; Esc o un clic in qualsiasi punto richiudono il messaggio, senza pulsanti di chiusura.
-- Catalogo, filtri, ricerca e schede prodotto con varianti, disponibilità e immagini gestite da Shopify.
+- Pagina **Prodotti** su `/collections/all`, con le due maglie e le schede native Shopify: immagini verticali, seconda immagine al passaggio del cursore e scelta delle varianti. Le schede arrivano a 380 px, affiancate da 600 px e in una colonna sulle finestre più strette; l’area si ferma a 1200 px. Filtri e ordinamento sono nascosti per il catalogo iniziale. Prodotti, disponibilità e immagini restano gestiti da Shopify.
 - Logo ufficiale `crev nero.png` centrato e interattivo: in homepage viene colorato crema (`#d8c4b9`), come i completamenti verticali Clothing, Rejects, Every e Verges che si rivelano passando sulle lettere. I completamenti sono più piccoli delle iniziali, ravvicinati al disegno e senza riquadro. Supporta anche tastiera e tocco, senza spostare il contenuto della pagina.
 - Icona a carrello sia vuoto sia con articoli, carrello laterale e checkout Shopify.
 - Foto iniziale a tutta larghezza e alta quanto la finestra visibile, con scorrimento orizzontale indipendente dalla testata. Le pagine prodotto restano accessibili dalle maglie nella foto; catalogo e collezioni restano disponibili nei rispettivi percorsi Shopify.
-- Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify e ingrandimento al passaggio del cursore pari al carrello (1,07×). In homepage, scimmia e carrello sono crema (`#d8c4b9`), come il logo. Menu e ricerca nascosti, riattivabili con “Mostra il menu nella testata” e “Mostra la ricerca nella testata” nell’editor. Il menu selezionato e le pagine restano disponibili.
+- Testata con `scimmia.png` al posto dell’icona generica di accesso all’account Shopify e ingrandimento al passaggio del cursore pari al carrello (1,07×). In homepage, scimmia e carrello sono crema (`#d8c4b9`), come il logo. Menu hamburger in alto a sinistra, su desktop e mobile, con Home, Prodotti, Chi siamo e Profilo; la pagina corrente è sottolineata e ha `aria-current="page"`. Profilo usa la scimmia e apre l’account Shopify. La ricerca resta nascosta e riattivabile nell’editor. Il menu classico può essere ripristinato disattivando “Usa le voci del menu CREV”.
+- Pagina **Chi siamo** già raggiungibile dal menu, con logo CREV e testo iniziale modificabile, basato solo su nome e identità del brand.
 - Layout responsive e traduzioni italiane già presenti in Dawn. Palette crema `#d8c4b9`, verde militare `#777d5a` e arancione.
 - Footer unico arancione (`#ed8b3a`) con testi verde militare (`#777d5a`). In basso a sinistra mostra il campo email e, subito sotto, “iscriviti alla newsletter”; seguono copyright, Powered by Shopify e informative, a 3 px dai bordi inferiore e sinistro. Social, logo C, selettori e icone di pagamento sono al momento nascosti. Restano attivi il modulo newsletter e i collegamenti alle informative pubblicate su Shopify; nascondere le icone non cambia i metodi di pagamento al checkout.
 - Pagina con password “Opening soon” con logo nero, sfondo camouflage a tutta pagina e riquadro arancione. Titolo e frase “be the first to know when the jungle opens” in marrone; la stampa della maglia crema segue il testo, alta 1 em. Accesso con password e iscrizione email mantengono i moduli Shopify.
@@ -58,8 +59,16 @@ Il caricamento crea un tema **non pubblicato**. Dalla sezione **Negozio online �
 1. Imposta il nome negozio **CREV**, il logo e l’italiano come lingua predefinita, se desiderato.
 2. Aggiungi i capi e le varianti taglia/colore con prezzi, foto e disponibilità reali.
 3. Nella sezione **CREV — Foto fullscreen**, puoi selezionare i prodotti Cream e Camo e regolare il focus orizzontale iniziale. Sono già selezionati i prodotti `cream-tribe-longsleeve` e `tribe-longsleeve-camo`, usati anche come predefiniti se i selettori sono vuoti. Il campo “Link diretto Cream” è impostato su `/products/cream-tribe-longsleeve` e prevale sul selettore del prodotto, mantenendo la navigazione nello stesso dominio dell’anteprima. La testata è sovrapposta solo in homepage e mantiene il normale comportamento sulle altre pagine.
-4. Configura il menu principale (ad esempio Shop e Contatti) e i collegamenti del footer.
+4. Il menu CREV è già configurato. Per collegare una pagina Chi siamo esistente, selezionala nelle impostazioni della testata in “Pagina Chi siamo”; altrimenti viene usata la vista Chi siamo inclusa nel tema. I collegamenti alle informative del footer dipendono dalle pagine pubblicate su Shopify.
 5. Configura pagamenti, spedizioni e informative nel pannello Shopify. Verifica un ordine di prova prima di pubblicare.
+
+## Menu e pagine
+
+Il menu CREV riusa il cassetto nativo Dawn, con apertura a tutte le larghezze, blocco dello scorrimento, gestione del focus, chiusura con l’hamburger o Esc. La scimmia nel menu ha una maschera SVG distinta da quella nella testata, per evitare identificatori duplicati.
+
+**Prodotti** usa il percorso Shopify già esistente `/collections/all`: non occorre creare una pagina o una collezione aggiuntiva. Il titolo è “Prodotti”; la griglia mostra i prodotti pubblicati del catalogo, attualmente Cream e Camo.
+
+**Chi siamo** usa `templates/index.chi-siamo.json`, una vista alternativa nativa Shopify raggiungibile su `/?view=chi-siamo`. È una pagina completa con risposta normale del tema, non una pagina 404 adattata. Questa soluzione la rende subito navigabile senza richiedere un nuovo record Pagina nel pannello Shopify. Titolo, logo, intestazione, voce corrente e URL canonico sono gestiti separatamente dalla home. Il testo iniziale si modifica nel file del template o nella sezione “CREV — Chi siamo” dell’editor. Si può passare a un normale percorso `/pages/...` scegliendo una Pagina Shopify già creata nel campo “Pagina Chi siamo” della testata. Riferimento: [template alternativi Shopify](https://shopify.dev/docs/storefronts/themes/architecture/templates/alternate-templates).
 
 ## Immagini e identità visiva
 
@@ -81,7 +90,10 @@ In assenza di una selezione, lo sfondo usa `assets/Pattern_Camo.PNG`. Il testo d
 
 ## Struttura
 
-- `assets/crev-theme.css`: identità visiva e testata sovrapposta della home.
+- `assets/crev-theme.css`: identità visiva, menu, testata e griglia della pagina Prodotti.
+- `snippets/crev-navigation.liquid`: menu CREV con pagina corrente e collegamento al profilo.
+- `templates/collection.json`, `sections/main-collection-banner.liquid`: pagina Prodotti.
+- `templates/index.chi-siamo.json`, `sections/crev-about.liquid`: pagina Chi siamo con testo modificabile.
 - `sections/footer.liquid`, `assets/crev-footer.css`: footer arancione essenziale, con newsletter sopra le diciture finali. Il file `assets/c nera.png` è conservato per utilizzi futuri.
 - `snippets/crev-header-brand.liquid`, `snippets/crev-acronym.liquid`, `assets/crev-acronym.js`, `assets/crev nero.png`: logo ufficiale centrato e completamenti verticali sulle quattro lettere.
 - `snippets/crev-logo.liquid`: vista del logo originale, condivisa fra testata e titolo; maschera opzionale per il colore arancione.

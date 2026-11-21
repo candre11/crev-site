@@ -1,0 +1,23 @@
+<section class="crev-about page-width" aria-labelledby="CrevAboutHeading-{{ section.id }}">
+  <h1 id="CrevAboutHeading-{{ section.id }}">{{ section.settings.heading | escape }}</h1>
+  {% render 'crev-logo', logo_class: 'crev-about__logo', mask_id: '' %}
+  <div class="crev-about__text rte">{{ section.settings.text }}</div>
+</section>
+
+{% schema %}
+{
+  "name": "CREV — Chi siamo",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titolo", "default": "Chi siamo" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Testo",
+      "default": "<p>Clothing Rejects Every Verges.</p><p>Devi CREVerci.</p>"
+    }
+  ],
+  "presets": [{ "name": "CREV — Chi siamo" }]
+}
+{% endschema %}

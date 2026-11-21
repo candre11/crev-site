@@ -1,5 +1,16 @@
 {%- assign storefront_name = settings.brand_name | default: 'CREV' -%}
 {%- assign storefront_title = page_title | replace: shop.name, storefront_name -%}
+{%- liquid
+  assign storefront_page_type = request.page_type | handle
+  assign storefront_canonical = canonical_url
+  if template.name == 'index' and template.suffix == 'chi-siamo'
+    assign storefront_page_type = 'about'
+    assign storefront_title = 'Chi siamo'
+    assign storefront_canonical = canonical_url | split: '?' | first | append: '?view=chi-siamo'
+  elsif request.page_type == 'collection' and collection.handle == 'all'
+    assign storefront_title = 'Prodotti'
+  endif
+-%}
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
@@ -7,7 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="canonical" href="{{ storefront_canonical | escape }}">
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
@@ -28,7 +39,7 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', page_title: storefront_title, canonical_url: storefront_canonical %}
 
     <script type="module">
       import * as StandardEvents from 'https://cdn.shopify.com/storefront/standard-events.js';
@@ -325,7 +336,7 @@
     </script>
   </head>
 
-  <body class="crev-storefront crev-storefront--{{ request.page_type | handle }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="crev-storefront crev-storefront--{{ storefront_page_type }} gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

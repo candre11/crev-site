@@ -1,8 +1,14 @@
 {%- assign storefront_name = settings.brand_name | default: 'CREV' -%}
 {%- liquid
   assign has_navigation = false
-  if section.settings.show_navigation and section.settings.menu != blank
-    assign has_navigation = true
+  if section.settings.show_navigation
+    if section.settings.crev_navigation or section.settings.menu != blank
+      assign has_navigation = true
+    endif
+  endif
+  assign is_crev_home = false
+  if request.page_type == 'index' and template.suffix == blank
+    assign is_crev_home = true
   endif
 -%}
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -35,7 +41,7 @@
     }
   {%- endif -%}
 
-  {%- if section.settings.menu_type_desktop != "drawer" -%}
+  {%- if section.settings.menu_type_desktop != "drawer" and section.settings.crev_navigation == false -%}
     @media screen and (min-width: 990px) {
       header-drawer {
         display: none;
@@ -144,7 +150,7 @@
 {% liquid
   assign header_tag = 'div'
 
-  if section.settings.sticky_header_type != 'none' and request.page_type != 'index'
+  if section.settings.sticky_header_type != 'none' and is_crev_home == false
     assign header_tag = 'sticky-header'
   endif
 %}
@@ -171,7 +177,7 @@
       assign language_selector = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if has_navigation %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
+  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' or section.settings.crev_navigation %} drawer-menu{% endif %}{% if has_navigation %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
     {%- liquid
       assign render_search_left = false
       if section.settings.show_search
@@ -181,7 +187,11 @@
       endif
 
       if has_navigation
-        render 'header-drawer', show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
+        if section.settings.crev_navigation
+          render 'crev-navigation'
+        else
+          render 'header-drawer', show_country_selector: country_selector, show_language_selector: language_selector, show_social_links: social_links
+        endif
       endif
 
       if render_search_left
@@ -194,7 +204,7 @@
     {%- endif -%}
 
     {%- liquid
-      if has_navigation
+      if has_navigation and section.settings.crev_navigation == false
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
@@ -512,6 +522,19 @@
       "label": "Mostra il menu nella testata",
       "default": false,
       "info": "Nasconde i collegamenti senza eliminare il menu o le pagine."
+    },
+    {
+      "type": "checkbox",
+      "id": "crev_navigation",
+      "label": "Usa le voci del menu CREV",
+      "default": true,
+      "info": "Home, Prodotti, Chi siamo e Profilo con la scimmia."
+    },
+    {
+      "type": "url",
+      "id": "about_page_url",
+      "label": "Pagina Chi siamo (facoltativa)",
+      "info": "Se vuoto, apre la pagina Chi siamo inclusa nel tema. Puoi selezionare una pagina Shopify esistente."
     },
     {
       "type": "checkbox",
