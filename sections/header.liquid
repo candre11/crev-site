@@ -6,6 +6,9 @@
       assign has_navigation = true
     endif
   endif
+  if request.page_type == 'product'
+    assign has_navigation = false
+  endif
   assign is_crev_home = false
   if request.page_type == 'index' and template.suffix == blank
     assign is_crev_home = true
@@ -180,7 +183,7 @@
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' or section.settings.crev_navigation %} drawer-menu{% endif %}{% if has_navigation %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if country_selector or language_selector %} header--has-localizations{% endif %}">
     {%- liquid
       assign render_search_left = false
-      if section.settings.show_search
+      if section.settings.show_search and request.page_type != 'product'
         if section.settings.logo_position == 'top-center' or has_navigation == false or shop.customer_accounts_enabled
           assign render_search_left = true
         endif
@@ -241,11 +244,15 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {%- if section.settings.show_search -%}
+      {%- if section.settings.show_search and request.page_type != 'product' -%}
         {% render 'header-search', input_id: 'Search-In-Modal' %}
       {%- endif -%}
 
-      {%- if shop.customer_accounts_enabled -%}
+      {%- if request.page_type == 'product' -%}
+        <a href="{{ routes.root_url }}" class="header__icon header__icon--home link focus-inset" aria-label="Home">
+          <span class="svg-wrapper">{{ 'icon-home.svg' | inline_asset_content }}</span>
+        </a>
+      {%- elsif shop.customer_accounts_enabled -%}
         <shopify-account
           menu="{{ settings.customer_account_menu | default: 'customer-account-main-menu' }}"
           class="header__icon header__icon--account link focus-inset"

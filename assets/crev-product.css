@@ -1,0 +1,217 @@
+/* One large, uncropped product image followed by the native Shopify form. */
+.crev-product {
+  --crev-image-height: min(125vw, max(28rem, calc(100svh - var(--header-height, 6.4rem) - 14rem)));
+  background: #d8c4b9;
+}
+
+.crev-product > product-component > .page-width {
+  width: 100%;
+  max-width: none;
+  padding-inline: 0;
+}
+
+.crev-product .product.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.crev-product .product .product__media-wrapper,
+.crev-product .product .product__info-wrapper {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.crev-product .product .product__info-wrapper {
+  padding: 2.4rem clamp(1.6rem, 4vw, 4rem) 0;
+}
+
+.crev-product .product__info-container {
+  max-width: 56rem;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.crev-product .product__media-wrapper slider-component,
+.crev-product .product__media-list.slider {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.crev-product .product__media-list.slider {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  scroll-padding-left: 0;
+}
+
+.crev-product .product__media-list.slider::after {
+  display: none;
+}
+
+.crev-product .product .product__media-list .product__media-item {
+  display: flex;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.crev-product .product-media-container {
+  width: 100%;
+  max-width: none;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.crev-product .product-media-container .product__media {
+  height: var(--crev-image-height);
+  padding: 0;
+}
+
+.crev-product .product__media img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.crev-product .product__media-wrapper .thumbnail-slider {
+  display: none;
+}
+
+.crev-product [id^='GalleryViewer-'] > .slider-buttons {
+  position: absolute;
+  z-index: 3;
+  right: 1.6rem;
+  bottom: 0.8rem;
+  display: flex;
+  gap: 0;
+  width: auto;
+}
+
+.crev-product media-gallery:has(.product__media-item:only-child) .slider-buttons {
+  display: none;
+}
+
+.crev-product .product__title {
+  margin-top: 0;
+}
+
+.crev-product .product__title h1 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.crev-product .price,
+.crev-product .price__container,
+.crev-product .product-form__quantity,
+.crev-product .product-form__buttons,
+.crev-product .product-form__input {
+  margin-inline: 0;
+}
+
+.crev-product .price__container {
+  justify-content: flex-start;
+}
+
+.crev-product .product__description {
+  text-align: left;
+}
+
+.crev-product .product-form__input--crev-size {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.8rem clamp(0.8rem, 2vw, 1.6rem);
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0 0 2.4rem;
+}
+
+.crev-product .product-form__input--crev-size .form__label {
+  width: 100%;
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.crev-product .product-form__input--crev-size input[type='radio'] + label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.4rem;
+  min-height: 4.8rem;
+  margin: 0;
+  padding: 0.4rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #000;
+  box-shadow: none;
+}
+
+.crev-product .product-form__input--crev-size input[type='radio'] + label::before {
+  display: none;
+}
+
+.crev-size-letter {
+  display: block;
+  width: auto;
+  height: 3.8rem;
+  overflow: visible;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.crev-size-letter path {
+  vector-effect: non-scaling-stroke;
+}
+
+.crev-product .product-form__input--crev-size input:checked + label .crev-size-letter {
+  fill: currentColor;
+}
+
+.crev-size-fallback {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px #000;
+}
+
+.crev-product .product-form__input--crev-size input:checked + label .crev-size-fallback {
+  color: #000;
+}
+
+.crev-product .product-form__input--crev-size input.disabled + label,
+.crev-product .product-form__input--crev-size input:disabled + label {
+  opacity: 0.4;
+}
+
+.crev-product .product-form__input--crev-size input.disabled + label::after,
+.crev-product .product-form__input--crev-size input:disabled + label::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0.4rem auto;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(-30deg);
+}
+
+@media (forced-colors: active) {
+  .crev-size-letter {
+    color: CanvasText;
+  }
+
+  .crev-product .product-form__input--crev-size input:checked + label {
+    outline: 2px solid CanvasText;
+    outline-offset: 3px;
+  }
+}

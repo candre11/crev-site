@@ -3,6 +3,7 @@
 
   @param {product_option} option - The product option whose values are rendered.
   @param {string} picker_type - The picker markup to render: `swatch`, `button`, `dropdown`, or `swatch_dropdown`.
+  @param {boolean} [crev_size_option] - Use the brand's label lettering for size buttons.
   @param {block} [block] - The variant-picker block, required for swatch settings.
   @param {object} [section] - The current product section context, supplied implicitly when rendered from that section and used to namespace option inputs.
 
@@ -89,7 +90,12 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}">
-      {{ value -}}
+      {%- if crev_size_option -%}
+        {% render 'crev-size-letter', size: value %}
+        <span class="visually-hidden">{{ value }}</span>
+      {%- else -%}
+        {{ value -}}
+      {%- endif -%}
       {{ label_unavailable }}
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}

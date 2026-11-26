@@ -24,8 +24,16 @@
       {%- liquid
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
+        assign crev_size_option = false
+        assign option_name = option.name | downcase
+        if section.settings.crev_product_layout
+          if option_name contains 'tagli' or option_name contains 'size' or option_name == 'misura'
+            assign crev_size_option = true
+            assign picker_type = 'button'
+          endif
+        endif
 
-        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+        if swatch_count > 0 and block.settings.swatch_shape != 'none' and crev_size_option == false
           if block.settings.picker_type == 'dropdown'
             assign picker_type = 'swatch_dropdown'
           else
@@ -48,12 +56,13 @@
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
-        <fieldset class="js product-form__input product-form__input--pill">
+        <fieldset class="js product-form__input product-form__input--pill{% if crev_size_option %} product-form__input--crev-size{% endif %}">
           <legend class="form__label">{{ option.name | escape }}</legend>
           {% render 'product-variant-options',
             option: option,
             block: block,
-            picker_type: picker_type
+            picker_type: picker_type,
+            crev_size_option: crev_size_option
           %}
         </fieldset>
       {%- else -%}

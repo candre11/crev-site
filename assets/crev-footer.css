@@ -1,26 +1,63 @@
 .footer.crev-footer {
-  --color-background: 237, 139, 58;
-  --color-foreground: 119, 125, 90;
-  --color-link: 119, 125, 90;
-  --color-button: 119, 125, 90;
-  --color-button-text: 237, 139, 58;
+  --color-background: 44, 37, 29;
+  --color-foreground: 237, 139, 58;
+  --color-link: 237, 139, 58;
+  --color-button: 237, 139, 58;
+  --color-button-text: 44, 37, 29;
   --font-body-family: var(--crev-label-font-family);
   --font-heading-family: var(--crev-label-font-family);
   --font-body-weight: 700;
   --font-heading-weight: 700;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) auto;
-  grid-template-areas: 'newsletter' 'legal';
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas: 'columns' 'newsletter' 'legal';
   gap: 1.2rem;
   min-height: clamp(38rem, 48vw, 60rem);
   margin-top: 0;
   padding: 3px;
   border: 0;
-  background: rgb(var(--color-background));
+  background: var(--crev-footer-pattern) center / cover no-repeat rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   font-family: var(--font-body-family);
   font-weight: 700;
+  text-shadow: 0 1px 2px #2c251d;
+}
+
+.crev-footer__columns {
+  grid-area: columns;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.4rem;
+  width: 100%;
+  max-width: 60rem;
+  padding: 2rem 1.3rem;
+}
+
+.crev-footer__columns h2 {
+  margin: 0 0 1.2rem;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.crev-footer__columns ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.5rem;
+  line-height: 1.9;
+}
+
+.crev-footer .field__input {
+  background: transparent;
+  color: inherit;
+}
+
+.crev-footer .field__label,
+.crev-footer .newsletter-form__button {
+  color: inherit;
 }
 
 .crev-footer .footer__content-top,

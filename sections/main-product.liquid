@@ -1,6 +1,6 @@
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}{% if section.settings.crev_product_layout %} crev-product{% endif %}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="true"
@@ -21,6 +21,9 @@
     {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
     {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   {% endunless %}
+  {%- if section.settings.crev_product_layout -%}
+    {{ 'crev-product.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
   {%- endif -%}
@@ -2151,6 +2154,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "crev_product_layout",
+      "label": "Foto a tutto schermo e taglie CREV",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",
