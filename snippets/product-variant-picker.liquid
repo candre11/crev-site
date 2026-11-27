@@ -65,7 +65,7 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill{% if crev_size_option %} product-form__input--crev-size{% endif %}">
-          <legend class="form__label">{{ option.name | escape }}</legend>
+          <legend class="{% if crev_size_option %}visually-hidden{% else %}form__label{% endif %}">{{ option.name | escape }}</legend>
           {% render 'product-variant-options',
             option: option,
             block: block,

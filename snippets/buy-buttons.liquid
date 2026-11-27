@@ -5,6 +5,7 @@
   @param {product} product - The product to purchase.
   @param {string} product_form_id - The product form's unique ID.
   @param {string} section_id - The section ID used to namespace the form and submit button.
+  @param {boolean} [crev_product_layout] - Whether to display the tax note below the CREV purchase buttons.
   @param {boolean} [show_pickup_availability] - Whether to render pickup availability. Defaults to `false`.
   @param {object} [section] - The current section context, supplied implicitly when rendered from a section and used for IDs and pickup-availability colors.
 
@@ -101,6 +102,9 @@
           {%- endif -%}
         </div>
       {%- endform -%}
+      {%- if crev_product_layout -%}
+        {% render 'crev-product-tax-note' %}
+      {%- endif -%}
     </product-form>
   {%- else -%}
     <div class="product-form">
