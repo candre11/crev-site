@@ -34,19 +34,13 @@
       assign crev_pair_url = crev_pair_product.url
     endif
   -%}
-  <crev-cart-pair class="crev-cart-pair" data-product-handle="{{ crev_pair_handle }}">
-  <aside aria-labelledby="CrevCartPair-{{ context | escape }}">
-    <h2 id="CrevCartPair-{{ context | escape }}">Perché non entrambe?</h2>
-    <a class="crev-cart-pair__product link link--text focus-inset" href="{{ crev_pair_url | escape }}">
-      {%- if crev_pair_product.featured_image != blank -%}
-        {{ crev_pair_product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 240', sizes: '72px', class: 'crev-cart-pair__image', alt: crev_pair_product.title }}
-      {%- endif -%}
-      <span>
-        <span class="crev-cart-pair__name">{{ crev_pair_product.title | default: crev_pair_title | escape }}</span>
-        <span class="crev-cart-pair__action">Scopri l’altra maglia {{ 'icon-arrow.svg' | inline_asset_content }}</span>
-      </span>
-    </a>
-    <button type="button" class="crev-cart-pair__dismiss" data-dismiss-pair>No grazie</button>
-  </aside>
+  <crev-cart-pair class="crev-cart-pair" data-product-handle="{{ crev_pair_handle }}" hidden>
+    <div class="crev-cart-pair__content" role="dialog" aria-modal="true" aria-labelledby="CrevCartPair-{{ context | escape }}" aria-describedby="CrevCartPairHint-{{ context | escape }}" tabindex="-1">
+      <h2 id="CrevCartPair-{{ context | escape }}">Sappiamo che le vuoi entrambe</h2>
+      <a class="crev-cart-pair__monkey" href="{{ crev_pair_url | escape }}" aria-label="Scopri {{ crev_pair_product.title | default: crev_pair_title | escape }}">
+        <img src="{{ 'scimmia.png' | asset_url }}" width="160" height="160" alt="" loading="eager">
+      </a>
+      <p id="CrevCartPairHint-{{ context | escape }}" class="visually-hidden">Clicca sulla scimmia per scoprire l’altra maglia. Per chiudere, clicca in un altro punto o premi Esc.</p>
+    </div>
   </crev-cart-pair>
 {%- endif -%}

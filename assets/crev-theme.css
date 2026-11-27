@@ -1,6 +1,7 @@
 :root {
   --crev-label-font-family: 'CREV Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --crev-label-font-weight: 700;
+  --crev-dismiss-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M8 8L24 24M24 8L8 24' fill='none' stroke='%23fffde7' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M8 8L24 24M24 8L8 24' fill='none' stroke='%232c251d' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") 16 16, crosshair;
 }
 
 .crev-storefront,
@@ -318,4 +319,13 @@ shopify-account.header__icon:focus-within .crev-account-avatar {
     transition: none;
     transform: translate(-50%, 0);
   }
+}
+
+/* Both dismissible CREV overlays use an X cursor, including their backdrops. */
+body.crev-cart-pair-open,
+body.crev-cart-pair-open *,
+body.crev-joke-open,
+body.crev-joke-open *,
+.crev-photo-hero__joke::backdrop {
+  cursor: var(--crev-dismiss-cursor) !important;
 }
