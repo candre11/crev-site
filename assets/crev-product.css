@@ -197,7 +197,19 @@
   vector-effect: non-scaling-stroke;
 }
 
-.crev-product .product-form__input--crev-size input:checked + label .crev-size-letter {
+.crev-size-letter__selected {
+  display: none;
+}
+
+.crev-product .product-form__input--crev-size input:checked + label .crev-size-letter__empty {
+  display: none;
+}
+
+.crev-product .product-form__input--crev-size input:checked + label .crev-size-letter__selected {
+  display: inline;
+}
+
+.crev-product .product-form__input--crev-size input:checked + label .crev-size-letter:not([data-size-art]) {
   fill: currentColor;
 }
 
