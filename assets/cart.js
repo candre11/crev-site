@@ -134,11 +134,12 @@ class CartItems extends window.StandardEvents.createViewEventElement(HTMLElement
     const index = event.target.dataset.index;
     let message = '';
 
-    if (inputValue < event.target.dataset.min) {
+    // Zero removes the line; minimum and increment rules apply to quantities being purchased.
+    if (inputValue !== 0 && inputValue < event.target.dataset.min) {
       message = window.quickOrderListStrings.min_error.replace('[min]', event.target.dataset.min);
     } else if (inputValue > parseInt(event.target.max)) {
       message = window.quickOrderListStrings.max_error.replace('[max]', event.target.max);
-    } else if (inputValue % parseInt(event.target.step) !== 0) {
+    } else if (inputValue !== 0 && inputValue % parseInt(event.target.step) !== 0) {
       message = window.quickOrderListStrings.step_error.replace('[step]', event.target.step);
     }
 

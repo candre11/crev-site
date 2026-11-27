@@ -104,6 +104,17 @@
       {%- endform -%}
       {%- if crev_product_layout -%}
         {% render 'crev-product-tax-note' %}
+        <details class="crev-product-details">
+          <summary>
+            <span class="crev-product-details__arrow" aria-hidden="true">&gt;</span>
+            Dettagli del prodotto
+          </summary>
+          <div class="crev-product-details__content">
+            <p>MADE IN ITALY</p>
+            <p>DESIGNED IN COMMENDA</p>
+            <p>100% COTTON 220 gsm</p>
+          </div>
+        </details>
       {%- endif -%}
     </product-form>
   {%- else -%}

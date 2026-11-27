@@ -147,7 +147,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 0.8rem clamp(0.4rem, 1vw, 1rem);
+  gap: 0.8rem 0.2rem;
   width: 100%;
   max-width: none;
   min-width: 0;
@@ -158,10 +158,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 4.4rem;
+  min-width: 2.8rem;
   min-height: 4.4rem;
   margin: 0;
-  padding: 0.4rem;
+  padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -256,4 +256,64 @@
 .crev-product product-form .product__tax {
   margin: 1rem 0 0;
   text-align: left;
+}
+
+.crev-product .quantity,
+.crev-product .product-form__submit {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: rgb(var(--color-foreground));
+}
+
+.crev-product .quantity::before,
+.crev-product .quantity::after,
+.crev-product .product-form__submit::before,
+.crev-product .product-form__submit::after {
+  display: none;
+}
+
+.crev-product .product-form__submit:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.crev-product-details {
+  margin-top: 1.6rem;
+  text-align: left;
+  font-size: 1.4rem;
+}
+
+.crev-product-details summary {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 4.4rem;
+  list-style: none;
+}
+
+.crev-product-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.crev-product-details__arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.crev-product-details[open] .crev-product-details__arrow {
+  transform: rotate(90deg);
+}
+
+.crev-product-details__content {
+  padding: 0.8rem 0 0.4rem;
+}
+
+.crev-product-details__content p {
+  margin: 0 0 0.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crev-product-details__arrow { transition: none; }
 }
