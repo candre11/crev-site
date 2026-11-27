@@ -1,6 +1,6 @@
 :root {
-  --crev-label-font-family: 'CREV Arimo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --crev-label-font-weight: 500;
+  --crev-label-font-family: 'CREV Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --crev-label-font-weight: 700;
 }
 
 .crev-storefront,
