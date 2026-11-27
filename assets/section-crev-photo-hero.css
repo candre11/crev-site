@@ -25,7 +25,7 @@
 }
 
 .crev-photo-hero__viewport:focus-visible {
-  outline: 2px solid #d8c4b9;
+  outline: 2px solid #fffde7;
   outline-offset: -4px;
 }
 
@@ -110,8 +110,8 @@
 
 .crev-photo-hero__product:hover polygon,
 .crev-photo-hero__product:focus-visible polygon {
-  fill: rgba(216, 196, 185, 0.08);
-  stroke: #d8c4b9;
+  fill: rgba(255, 253, 231, 0.08);
+  stroke: #fffde7;
 }
 
 .crev-photo-hero__setup {
@@ -122,7 +122,7 @@
   margin: 0;
   padding: 0.8rem 1.2rem;
   background: rgba(44, 37, 29, 0.8);
-  color: #d8c4b9;
+  color: #fffde7;
   font-size: 1.4rem;
   line-height: 1.4;
 }
@@ -160,7 +160,7 @@ body.crev-joke-open {
   border: 0;
   background: transparent;
   box-shadow: none;
-  color: #d8c4b9;
+  color: #fffde7;
   text-align: center;
 }
 
@@ -191,7 +191,7 @@ body.crev-joke-open {
   display: block;
   width: clamp(12rem, 18vw, 18rem);
   height: auto;
-  filter: drop-shadow(0 1px 2px rgba(216, 196, 185, 0.75));
+  filter: drop-shadow(0 1px 2px rgba(255, 253, 231, 0.75));
 }
 
 .crev-photo-hero__joke .crev-photo-hero__joke-title:focus {

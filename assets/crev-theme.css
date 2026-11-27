@@ -1,23 +1,34 @@
 :root {
-  --crev-label-font-family: Arial, Helvetica, sans-serif;
+  --crev-label-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.crev-storefront--index,
-.crev-storefront--collection,
-.crev-storefront--product,
-.crev-storefront--about,
+.crev-storefront,
 .crev-password {
   --font-body-family: var(--crev-label-font-family);
   --font-heading-family: var(--crev-label-font-family);
   --font-body-weight: 700;
   --font-body-weight-bold: 700;
   --font-heading-weight: 700;
+  text-transform: uppercase;
+}
+
+.crev-storefront button,
+.crev-storefront input[type='submit'],
+.crev-password button,
+.crev-password input[type='submit'] {
+  font-family: var(--crev-label-font-family);
+  text-transform: uppercase;
+}
+
+.crev-storefront .form-status-list .link::first-letter,
+.crev-password .form-status-list .link::first-letter {
+  text-transform: uppercase;
 }
 
 /* Product pages have their own compact navigation; the homepage stays unchanged. */
 .crev-storefront--product .header-wrapper {
   border-bottom: 0;
-  background: #d8c4b9;
+  background: #fffde7;
 }
 
 .crev-storefront--product .header {
@@ -74,14 +85,14 @@
 }
 
 .crev-storefront--index .crev-acronym {
-  --color-foreground: 216, 196, 185;
+  --color-foreground: 255, 253, 231;
   color: rgb(var(--color-foreground));
 }
 
 .crev-storefront--index .crev-account-avatar,
 .crev-storefront--index .header__icon--cart,
 .crev-storefront--index .header__icon--menu {
-  color: #d8c4b9;
+  color: #fffde7;
 }
 
 .crev-navigation .menu-drawer__menu-item {
