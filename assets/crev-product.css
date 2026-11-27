@@ -34,6 +34,28 @@
   text-align: left;
 }
 
+.crev-product__summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.crev-product__summary > * {
+  margin-block: 0;
+}
+
+.crev-product .crev-product__summary .product-form__input--crev-size {
+  margin-bottom: 0;
+}
+
+.crev-product .crev-product__purchase {
+  margin-block: 2.4rem 0;
+}
+
+.crev-product__purchase > * + * {
+  margin-block: 1.5rem;
+}
+
 .crev-product .product__media-wrapper slider-component,
 .crev-product .product__media-list.slider {
   width: 100%;
@@ -203,6 +225,17 @@
   height: 1px;
   background: currentColor;
   transform: rotate(-30deg);
+}
+
+@media screen and (max-width: 749px) {
+  .crev-product {
+    /* The summary is measured so real titles, prices and size rows fit above the fold. */
+    --crev-image-height: max(16rem, calc(100svh - var(--header-height, 6.4rem) - var(--crev-summary-height, 19rem) - 4rem));
+  }
+
+  .crev-product__summary {
+    gap: 1rem;
+  }
 }
 
 @media (forced-colors: active) {

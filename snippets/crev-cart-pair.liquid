@@ -1,0 +1,52 @@
+{%- doc -%}
+  Suggests the other CREV shirt when exactly one of the two product types is in the cart.
+  Sizes, separate line items and quantities do not affect the presence check.
+
+  @param {string} context - A unique heading suffix: drawer or page.
+{%- enddoc -%}
+{%- liquid
+  assign crev_has_cream = false
+  assign crev_has_camo = false
+  for item in cart.items
+    assign crev_cart_handle = item.product.handle | default: item.handle
+    if crev_cart_handle == 'cream-tribe-longsleeve'
+      assign crev_has_cream = true
+    elsif crev_cart_handle == 'tribe-longsleeve-camo'
+      assign crev_has_camo = true
+    endif
+  endfor
+
+  assign crev_pair_handle = ''
+  if crev_has_cream and crev_has_camo == false
+    assign crev_pair_handle = 'tribe-longsleeve-camo'
+    assign crev_pair_title = 'Camo Tribe Longsleeve'
+  elsif crev_has_camo and crev_has_cream == false
+    assign crev_pair_handle = 'cream-tribe-longsleeve'
+    assign crev_pair_title = 'Cream Tribe Longsleeve'
+  endif
+-%}
+{%- if crev_pair_handle != blank -%}
+  {%- liquid
+    assign crev_pair_product = all_products[crev_pair_handle]
+    assign crev_pair_path = 'products/' | append: crev_pair_handle
+    assign crev_pair_url = routes.root_url | append: crev_pair_path
+    if crev_pair_product.url != blank
+      assign crev_pair_url = crev_pair_product.url
+    endif
+  -%}
+  <crev-cart-pair class="crev-cart-pair" data-product-handle="{{ crev_pair_handle }}">
+  <aside aria-labelledby="CrevCartPair-{{ context | escape }}">
+    <h2 id="CrevCartPair-{{ context | escape }}">Perché non entrambe?</h2>
+    <a class="crev-cart-pair__product link link--text focus-inset" href="{{ crev_pair_url | escape }}">
+      {%- if crev_pair_product.featured_image != blank -%}
+        {{ crev_pair_product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 240', sizes: '72px', class: 'crev-cart-pair__image', alt: crev_pair_product.title }}
+      {%- endif -%}
+      <span>
+        <span class="crev-cart-pair__name">{{ crev_pair_product.title | default: crev_pair_title | escape }}</span>
+        <span class="crev-cart-pair__action">Scopri l’altra maglia {{ 'icon-arrow.svg' | inline_asset_content }}</span>
+      </span>
+    </a>
+    <button type="button" class="crev-cart-pair__dismiss" data-dismiss-pair>No grazie</button>
+  </aside>
+  </crev-cart-pair>
+{%- endif -%}

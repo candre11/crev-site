@@ -23,6 +23,8 @@
   {% endunless %}
   {%- if section.settings.crev_product_layout -%}
     {{ 'crev-product.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'crev-product-viewport.js' | asset_url }}" defer="defer"></script>
+    <crev-product-viewport hidden></crev-product-viewport>
   {%- endif -%}
   {%- if product.quantity_price_breaks_configured? -%}
     {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
@@ -89,7 +91,29 @@
           >
             {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+            {%- liquid
+              assign crev_block_groups = 1
+              assign crev_summary_types = 'title,price,variant_picker' | split: ','
+              if section.settings.crev_product_layout
+                assign crev_block_groups = 2
+              endif
+            -%}
+            {%- for crev_group in (1..crev_block_groups) -%}
+              {%- if section.settings.crev_product_layout -%}
+                <div class="{% if crev_group == 1 %}crev-product__summary{% else %}crev-product__purchase{% endif %}">
+              {%- endif -%}
             {%- for block in section.blocks -%}
+              {%- if section.settings.crev_product_layout -%}
+                {%- liquid
+                  assign crev_block_group = 2
+                  if crev_summary_types contains block.type
+                    assign crev_block_group = 1
+                  endif
+                  if crev_group != crev_block_group
+                    continue
+                  endif
+                -%}
+              {%- endif -%}
               {%- case block.type -%}
                 {%- when '@app' -%}
                   {% render block %}
@@ -689,6 +713,10 @@
                 {%- when 'icon-with-text' -%}
                   {% render 'icon-with-text', block: block %}
               {%- endcase -%}
+            {%- endfor -%}
+              {%- if section.settings.crev_product_layout -%}
+                </div>
+              {%- endif -%}
             {%- endfor -%}
             <a href="{{ product.url }}" class="link product__view-details animate-arrow">
               {{ 'products.product.view_full_details' | t }}
