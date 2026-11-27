@@ -292,6 +292,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% render 'crev-fonts' %}
     {{ 'crev-theme.css' | asset_url | stylesheet_tag }}
     {{ 'crev-cart-pair.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'crev-cart-pair.js' | asset_url }}" defer="defer"></script>

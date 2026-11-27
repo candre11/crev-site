@@ -1,14 +1,15 @@
 :root {
-  --crev-label-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --crev-label-font-family: 'CREV Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --crev-label-font-weight: 500;
 }
 
 .crev-storefront,
 .crev-password {
   --font-body-family: var(--crev-label-font-family);
   --font-heading-family: var(--crev-label-font-family);
-  --font-body-weight: 700;
-  --font-body-weight-bold: 700;
-  --font-heading-weight: 700;
+  --font-body-weight: var(--crev-label-font-weight);
+  --font-body-weight-bold: var(--crev-label-font-weight);
+  --font-heading-weight: var(--crev-label-font-weight);
   text-transform: uppercase;
 }
 
@@ -17,6 +18,7 @@
 .crev-password button,
 .crev-password input[type='submit'] {
   font-family: var(--crev-label-font-family);
+  font-weight: var(--crev-label-font-weight);
   text-transform: uppercase;
 }
 
@@ -99,7 +101,7 @@
   gap: 1.2rem;
   font-family: var(--crev-label-font-family);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
   line-height: 1.4;
 }
 
@@ -264,7 +266,7 @@ shopify-account.header__icon:focus-within .crev-account-avatar {
   box-shadow: none;
   font-family: var(--crev-label-font-family);
   font-size: var(--crev-acronym-font-size);
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
   line-height: 1;
   letter-spacing: -0.06em;
   white-space: nowrap;

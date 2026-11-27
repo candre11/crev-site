@@ -14,7 +14,7 @@
 
 .crev-cart-pair h2 {
   margin: 0 0 1.2rem;
-  font: 700 2rem / 1.2 var(--crev-label-font-family);
+  font: var(--crev-label-font-weight) 2rem / 1.2 var(--crev-label-font-family);
 }
 
 .crev-cart-pair__product {
@@ -35,7 +35,7 @@
 .crev-cart-pair__name {
   display: block;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
 }
 
 .crev-cart-pair__action {

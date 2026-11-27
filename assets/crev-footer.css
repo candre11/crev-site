@@ -6,8 +6,8 @@
   --color-button-text: 44, 37, 29;
   --font-body-family: var(--crev-label-font-family);
   --font-heading-family: var(--crev-label-font-family);
-  --font-body-weight: 700;
-  --font-heading-weight: 700;
+  --font-body-weight: var(--crev-label-font-weight);
+  --font-heading-weight: var(--crev-label-font-weight);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto minmax(0, 1fr) auto;
@@ -20,7 +20,7 @@
   background: var(--crev-footer-pattern) center / cover no-repeat rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   font-family: var(--font-body-family);
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
   text-shadow: 0 1px 2px #2c251d;
 }
 
@@ -39,7 +39,7 @@
   color: inherit;
   font-family: inherit;
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
 }
 
 .crev-footer__columns ul {
@@ -80,7 +80,7 @@
   margin: 0.8rem 0 0;
   color: inherit;
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
 }
 
 .crev-footer .footer__newsletter,
@@ -128,7 +128,7 @@
   color: inherit;
   font-family: inherit;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: var(--crev-label-font-weight);
   line-height: 1.4;
 }
 
