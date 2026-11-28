@@ -1,0 +1,21 @@
+{%- doc -%}
+  Outputs true or false using shared size detection for the picker and purchase form.
+
+  @param {product_option} option - The product option to inspect.
+{%- enddoc -%}
+{%- liquid
+  assign option_name = option.name | downcase
+  assign known_sizes = '|XS|S|M|L|XL|XXL|XXXL|2XL|3XL|SMALL|MEDIUM|LARGE|EXTRALARGE|'
+  assign size_values = true
+  for option_value in option.values
+    assign size_key = option_value | upcase | strip | remove: ' ' | prepend: '|' | append: '|'
+    unless known_sizes contains size_key
+      assign size_values = false
+    endunless
+  endfor
+  if option_name contains 'tagli' or option_name contains 'size' or option_name == 'misura' or option_name == 'dimensione' or size_values
+    echo 'true'
+  else
+    echo 'false'
+  endif
+-%}

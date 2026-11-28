@@ -25,17 +25,12 @@
         assign swatch_count = option.values | map: 'swatch' | compact | size
         assign picker_type = block.settings.picker_type
         assign crev_size_option = false
-        assign option_name = option.name | downcase
         if section.settings.crev_product_layout
-          assign crev_size_values = true
-          assign crev_known_sizes = '|XS|S|M|L|XL|XXL|XXXL|2XL|3XL|SMALL|MEDIUM|LARGE|EXTRALARGE|'
-          for option_value in option.values
-            assign crev_size_key = option_value | upcase | strip | remove: ' ' | prepend: '|' | append: '|'
-            unless crev_known_sizes contains crev_size_key
-              assign crev_size_values = false
-            endunless
-          endfor
-          if option_name contains 'tagli' or option_name contains 'size' or option_name == 'misura' or option_name == 'dimensione' or crev_size_values
+          capture crev_size_match
+            render 'crev-is-size-option', option: option
+          endcapture
+          assign crev_size_match = crev_size_match | strip
+          if crev_size_match == 'true'
             assign crev_size_option = true
             assign picker_type = 'button'
           endif

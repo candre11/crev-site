@@ -6,18 +6,25 @@ if (!customElements.get('product-form')) {
         super();
 
         this.form = this.querySelector('form');
-        this.variantIdInput.disabled = false;
+        this.variantIdInput.disabled = this.crevSizeSelectionPending;
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.submitButton = this.querySelector('[type="submit"]');
         this.submitButtonText = this.submitButton.querySelector('span');
 
         this.hideErrors = this.dataset.hideErrors === 'true';
+        if (this.dataset.crevSizeSelection === 'true') this.toggleSubmitButton(this.submitButton.disabled);
       }
 
       onSubmitHandler(evt) {
         evt.preventDefault();
-        if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
+        if (this.crevSizeSelectionPending) {
+          this.closest('product-info')?.querySelector(
+            'variant-selects .product-form__input--crev-size input:not(.disabled):not(:disabled)'
+          )?.focus();
+          return;
+        }
+        if (this.submitButton.disabled || this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
         this.handleErrorMessage();
 
@@ -134,6 +141,20 @@ if (!customElements.get('product-form')) {
       }
 
       toggleSubmitButton(disable = true, text) {
+        if (this.dataset.crevSizeSelection === 'true') {
+          const pending = this.crevSizeSelectionPending;
+          this.classList.toggle('crev-size-pending', pending);
+          this.classList.toggle('crev-size-chosen', !pending);
+          const checkout = this.querySelector('[data-crev-dynamic-checkout]');
+          if (checkout) checkout.hidden = pending || disable;
+          this.variantIdInput.disabled = pending || disable;
+          if (pending) {
+            this.submitButton.removeAttribute('disabled');
+            this.submitButtonText.textContent = 'Seleziona la taglia';
+            return;
+          }
+          if (disable && !text) text = window.variantStrings.addToCart;
+        }
         if (disable) {
           this.submitButton.setAttribute('disabled', 'disabled');
           if (text) this.submitButtonText.textContent = text;
@@ -157,6 +178,24 @@ if (!customElements.get('product-form')) {
           })
         );
         return deferred;
+      }
+
+      get crevSizeSelectionPending() {
+        if (this.dataset.crevSizeSelection !== 'true') return false;
+        const groups = this.closest('product-info')?.querySelector('variant-selects')
+          ?.querySelectorAll('.product-form__input--crev-size');
+        return !groups?.length || Array.from(groups).some((group) => !group.querySelector('input:checked'));
+      }
+
+      resetCrevSizeSelection() {
+        if (this.dataset.crevSizeSelection !== 'true') return;
+        this.closest('product-info')?.querySelector('variant-selects')
+          ?.querySelectorAll('.product-form__input--crev-size input').forEach((input) => {
+            input.checked = false;
+            input.removeAttribute('checked');
+          });
+        this.toggleSubmitButton(true);
+        this.handleErrorMessage('Non è stato possibile aggiornare la taglia. Selezionala di nuovo.');
       }
 
       resolveCartLinesUpdate(deferred) {

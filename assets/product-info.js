@@ -120,7 +120,10 @@ if (!customElements.get('product-info')) {
         this.abortController = new AbortController();
 
         fetch(requestUrl, { signal: this.abortController.signal })
-          .then((response) => response.text())
+          .then((response) => {
+            if (!response.ok) throw new Error(`Product update failed: ${response.status}`);
+            return response.text();
+          })
           .then((responseText) => {
             this.pendingRequestUrl = null;
             const html = new DOMParser().parseFromString(responseText, 'text/html');
@@ -132,7 +135,9 @@ if (!customElements.get('product-info')) {
             if (error.name === 'AbortError') {
               console.log('Fetch aborted by user');
             } else {
+              this.pendingRequestUrl = null;
               console.error(error);
+              this.productForm?.resetCrevSizeSelection();
             }
             this.variantSelectors?.rejectPendingSelectPromise(error);
           });
@@ -169,6 +174,15 @@ if (!customElements.get('product-info')) {
       updateOptionValues(html) {
         const variantSelects = html.querySelector('variant-selects');
         if (variantSelects) {
+          // Liquid starts sizes empty. Restore customer choices in the serialized
+          // replacement, ignoring Dawn's hidden old picker during fast changes.
+          const selectedSizes = new Map(
+            Array.from(this.variantSelectors?.querySelectorAll('.product-form__input--crev-size input:checked') || [])
+              .map((input) => [input.name, input.value])
+          );
+          variantSelects.querySelectorAll('.product-form__input--crev-size input').forEach((input) => {
+            input.toggleAttribute('checked', selectedSizes.get(input.name) === input.value);
+          });
           HTMLUpdateUtility.viewTransition(this.variantSelectors, variantSelects, this.preProcessHtmlCallbacks);
         }
       }

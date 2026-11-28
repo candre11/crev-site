@@ -302,7 +302,7 @@
 }
 
 .crev-product .product-form__submit:focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid #000;
   outline-offset: 3px;
 }
 
@@ -347,4 +347,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   .crev-product-details__arrow { transition: none; }
+}
+
+.crev-product product-form[data-crev-size-selection='true'] .product-form__submit {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.crev-product product-form.crev-size-pending .product-form__submit {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+}
+
+.crev-product product-form.crev-size-pending .product-form__submit > span:first-child {
+  text-decoration: none;
+}
+
+.crev-product [data-crev-dynamic-checkout][hidden] {
+  display: none !important;
 }

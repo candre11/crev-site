@@ -5,7 +5,7 @@
   @param {product} product - The product to purchase.
   @param {string} product_form_id - The product form's unique ID.
   @param {string} section_id - The section ID used to namespace the form and submit button.
-  @param {boolean} [crev_product_layout] - Whether to display the tax note below the CREV purchase buttons.
+  @param {boolean} [crev_product_layout] - Use the CREV size-selection gate and product details.
   @param {boolean} [show_pickup_availability] - Whether to render pickup availability. Defaults to `false`.
   @param {object} [section] - The current section context, supplied implicitly when rendered from a section and used for IDs and pickup-availability colors.
 
@@ -24,10 +24,25 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+
+      assign crev_require_size = false
+      if crev_product_layout and product.has_only_default_variant == false
+        for option in product.options_with_values
+          capture crev_size_match
+            render 'crev-is-size-option', option: option
+          endcapture
+          assign crev_size_match = crev_size_match | strip
+          if crev_size_match == 'true'
+            assign crev_require_size = true
+            break
+          endif
+        endfor
+      endif
     -%}
 
     <product-form
-      class="product-form"
+      class="product-form{% if crev_require_size %} crev-size-pending{% endif %}"
+      data-crev-size-selection="{{ crev_require_size }}"
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
     >
@@ -51,7 +66,8 @@
           type="hidden"
           name="id"
           value="{{ product.selected_or_first_available_variant.id }}"
-          {% if product.selected_or_first_available_variant.available == false
+          {% if crev_require_size
+            or product.selected_or_first_available_variant.available == false
             or quantity_rule_soldout
             or product.selected_or_first_available_variant == null
           %}
@@ -87,7 +103,9 @@
             {% endif %}
           >
             <span>
-              {%- if product.selected_or_first_available_variant == null -%}
+              {%- if crev_require_size -%}
+                Seleziona la taglia
+              {%- elsif product.selected_or_first_available_variant == null -%}
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
@@ -98,7 +116,11 @@
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
+            {%- if crev_require_size -%}
+              <div data-crev-dynamic-checkout hidden>{{ form | payment_button }}</div>
+            {%- else -%}
+              {{ form | payment_button }}
+            {%- endif -%}
           {%- endif -%}
         </div>
       {%- endform -%}
